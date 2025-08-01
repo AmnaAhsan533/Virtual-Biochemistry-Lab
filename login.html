@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Virtual Biochemistry Lab</title>
+    <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="navbar">
+    <div class="logo">
+        <i class='bxr  bx-dna'></i>
+        <p>Virtual Lab</p> 
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Simulations</a>
+      <a href="#">Quizzes</a>
+      <a href="#">Resources</a>
+    </nav>
+  </header>
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                <button type="button" class="toggle-btn" onclick="register()">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login" class="input-group" onsubmit="return validateLogin()">
+                <input type="text" id="loginUserId" class="input-field" placeholder="User Id" required>
+                <input type="password" id="loginPassword" class="input-field" placeholder="Enter Password" required>
+                <input type="checkbox" class="check-box"><span>Remember Password</span>
+                <button type="submit" class="submit-btn">Login</button>
+                <button type="submit" class="submit-btn" onclick="continueAsGuest()">Continue as Guest</button>
+            </form>
+
+            <!-- Registration Form -->
+            <form id="register" class="input-group" onsubmit="return validateRegister()">
+                <input type="text" id="registerUserId" class="input-field" placeholder="User Id" required>
+                <input type="password" id="registerPassword" class="input-field" placeholder="Enter Password" required>
+                <input type="email" id="registerEmail" class="input-field" placeholder="Email Id" required>
+                <input type="checkbox" id="registerTerms" class="check-box"><span>I agree to the terms & conditions</span>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
