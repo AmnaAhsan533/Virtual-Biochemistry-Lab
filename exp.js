@@ -1,72 +1,133 @@
-// exp.js
+let isPouring = false;
+    let milkLevel = 0;
+    const maxLevel = 200; // max height in px
+    let pourInterval;
 
-let pH = 7.0;
-let hasMilk = false;
-let hasWater = false;
-let dropperFilled = false;
+    window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("milk").addEventListener("click", togglePour);
+});
+    function togglePour() {
+      const bottle = document.getElementById("milk");
+      const stream = document.getElementById("milk-stream");
+      const fill = document.getElementById("milk-fill");
 
-const beaker = document.getElementById("beaker");
-const milk = document.getElementById("milk");
-const water = document.getElementById("water");
-const dropper = document.getElementById("dropper");
-const acid = document.getElementById("acid");
-const milkInBeaker = document.getElementById("milkInBeaker");
-const waterInBeaker = document.getElementById("waterInBeaker");
-const precipitate = document.getElementById("precipitate");
+      if (!isPouring) {
+        // Start pouring
+        isPouring = true;
 
-function isOverlapping(elem1, elem2) {
-  const rect1 = elem1.getBoundingClientRect();
-  const rect2 = elem2.getBoundingClientRect();
-  return !(
-    rect1.right < rect2.left ||
-    rect1.left > rect2.right ||
-    rect1.bottom < rect2.top ||
-    rect1.top > rect2.bottom
-  );
+        // Animate bottle tilt
+        anime({
+          targets: bottle,
+          rotate: 45,
+          duration: 400,
+          easing: 'easeInOutSine'
+        });
+
+        // Animate milk stream down
+        anime({
+          targets: stream,
+          height: '100px',
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+
+        // Start filling gradually
+        pourInterval = setInterval(() => {
+          if (milkLevel >= maxLevel) {
+            stopPour();
+            return;
+          }
+          milkLevel += 1;
+          fill.style.height = milkLevel + 'px';
+        }, 30);
+      } else {
+        stopPour();
+      }
+    }
+
+    function stopPour() {
+      const bottle = document.getElementById("milk");
+      const stream = document.getElementById("milk-stream");
+
+      isPouring = false;
+      clearInterval(pourInterval);
+
+      // Animate bottle back
+      anime({
+        targets: bottle,
+        rotate: 0,
+        duration: 400,
+        easing: 'easeInOutSine'
+      });
+
+      // Animate milk stream up
+      anime({
+        targets: stream,
+        height: '0px',
+        duration: 300,
+        easing: 'easeOutQuad'
+      });
+    }
+    let isPouringWater = false;
+let waterLevel = 0;
+const waterMax = 200;
+let waterInterval;
+
+document.getElementById("water").addEventListener("click", toggleWaterPour);
+
+function toggleWaterPour() {
+  const bottle = document.getElementById("water");
+  const stream = document.getElementById("water-stream");
+  const fill = document.getElementById("water-fill");
+
+  if (!isPouringWater) {
+    isPouringWater = true;
+
+    anime({
+      targets: bottle,
+      rotate: -45,
+      duration: 400,
+      easing: 'easeInOutSine'
+    });
+
+    anime({
+      targets: stream,
+      height: '100px',
+      duration: 300,
+      easing: 'easeOutQuad'
+    });
+
+    waterInterval = setInterval(() => {
+      if (waterLevel >= waterMax) {
+        stopWaterPour();
+        return;
+      }
+      waterLevel += 1;
+      fill.style.height = waterLevel + 'px';
+    }, 30);
+  } else {
+    stopWaterPour();
+  }
 }
 
-function showLiquid(element) {
-  gsap.to(element, { opacity: 1, duration: 0.5 });
-}
+function stopWaterPour() {
+  const bottle = document.getElementById("water");
+  const stream = document.getElementById("water-stream");
 
-function addDropperBehavior() {
-  Draggable.create(dropper, {
-    bounds: "body",
-    onDragEnd: function () {
-      if (!dropperFilled && isOverlapping(this.target, acid)) {
-        dropperFilled = true;
-        gsap.to(this.target, { y: "-=20", duration: 0.3, yoyo: true, repeat: 1 });
-      }
-      if (dropperFilled && isOverlapping(this.target, beaker)) {
-        pH -= 0.5;
-        dropperFilled = false;
-        console.log("pH:", pH.toFixed(1));
-        if (pH <= 4.6) {
-          showLiquid(precipitate);
-        }
-      }
-    },
+  isPouringWater = false;
+  clearInterval(waterInterval);
+
+  anime({
+    targets: bottle,
+    rotate: 0,
+    duration: 400,
+    easing: 'easeInOutSine'
+  });
+
+  anime({
+    targets: stream,
+    height: '0px',
+    duration: 300,
+    easing: 'easeOutQuad'
   });
 }
-
-Draggable.create(milk, {
-  bounds: "body",
-  onDragEnd: function () {
-    if (isOverlapping(this.target, beaker)) {
-      hasMilk = true;
-      showLiquid(milkInBeaker);
-    }
-  },
-});
-
-Draggable.create(water, {
-  bounds: "body",
-  onDragEnd: function () {
-    if (isOverlapping(this.target, beaker)) {
-      hasWater = true;
-      showLiquid(waterInBeaker);
-    }
-  },
-});
-
-addDropperBehavior();
