@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protein Precipitation Lab</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f172a;
+      color: #cbd5e1;
+      margin: 0;
+      overflow: hidden;
+    }
+    
+    .lab-container {
+      display: flex;
+      height: 100vh;
+    }
+    
+    .workspace {
+      position: relative;
+      width: 70%;
+      height: 100%;
+      background-color: #1e293b;
+    }
+    
+    .lab-bench {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 120px;
+      background-color: #334155;
+      border-top: 4px solid #64748b;
+    }
+    
+    .instructions {
+      width: 30%;
+      padding: 20px;
+      background-color: #1e293b;
+      overflow-y: auto;
+    }
+    
+    .apparatus {
+      position: absolute;
+      cursor: grab;
+      user-select: none;
+      z-index: 10;
+    }
+    
+    .beaker {
+      width: 120px;
+      bottom: 120px;
+      left: 40%;
+    }
+    
+    .milk {
+      width: 100px;
+      bottom: 180px;
+      left: 10%;
+    }
+    
+    .water {
+      width: 100px;
+      bottom: 180px;
+      left: 20%;
+    }
+    
+    .acid {
+      width: 80px;
+      bottom: 180px;
+      left: 80%;
+    }
+    
+    .dropper {
+      width: 60px;
+      bottom: 180px;
+      left: 85%;
+    }
+    
+    .liquid {
+      position: absolute;
+      bottom: 0;
+      width: 80%;
+      left: 10%;
+      border-radius: 0 0 50px 50px;
+      transition: height 0.5s ease;
+    }
+    
+    #beaker-contents {
+      height: 0;
+      background: linear-gradient(to top, #f5f5f5, #e0e0e0);
+      z-index: 1;
+    }
+    
+    #precipitate {
+      height: 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      z-index: 2;
+    }
+    
+    .ph-meter {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #0ea5e9;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+    
+    .stream {
+      position: absolute;
+      width: 8px;
+      background-color: white;
+      opacity: 0;
+      z-index: 5;
+    }
+    
+    .reset-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .step {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #334155;
+    }
+    
+    .step.completed {
+      background-color: #1e4a3e;
+    }
+    
+    .current-step {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="lab-container">
+    <div class="workspace">
+      <div class="ph-meter">pH: 7.0</div>
+      
+      <div class="lab-bench"></div>
+      
+      <img src="assets/EmptyBeaker.png" class="apparatus beaker" id="beaker">
+      <div id="beaker-contents" class="liquid"></div>
+      <div id="precipitate" class="liquid"></div>
+      
+      <img src="assets/milk.png" class="apparatus milk" id="milk">
+      <div id="milk-stream" class="stream"></div>
+      
+      <img src="assets/water.png" class="apparatus water" id="water">
+      <div id="water-stream" class="stream"></div>
+      
+      <img src="assets/acid.png" class="apparatus acid" id="acid">
+      <img src="assets/dropper.png" class="apparatus dropper" id="dropper">
+      
+      <button class="reset-btn" id="reset">Reset Experiment</button>
+    </div>
+    
+    <div class="instructions">
+      <h2>Isoelectric Precipitation</h2>
+      <p>Perform the experiment by following these steps:</p>
+      
+      <div class="step" id="step1">
+        <strong>1.</strong> Drag <strong>Milk</strong> into the beaker
+      </div>
+      
+      <div class="step" id="step2">
+        <strong>2.</strong> Drag <strong>Distilled Water</strong> to equalize volume
+      </div>
+      
+      <div class="step" id="step3">
+        <strong>3.</strong> Drag <strong>Dropper</strong> into <strong>Acid</strong> jar
+      </div>
+      
+      <div class="step" id="step4">
+        <strong>4.</strong> Drag <strong>Dropper</strong> to beaker to add acid
+      </div>
+      
+      <div class="step" id="step5">
+        <strong>5.</strong> Watch for precipitation at pH 4.6
+      </div>
+      
+      <div id="results" style="margin-top: 20px; display: none;">
+        <h3>Experiment Results</h3>
+        <p>You've successfully precipitated casein proteins at their isoelectric point!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const milk = document.getElementById('milk');
+      const water = document.getElementById('water');
+      const acid = document.getElementById('acid');
+      const dropper = document.getElementById('dropper');
+      const beaker = document.getElementById('beaker');
+      const beakerContents = document.getElementById('beaker-contents');
+      const precipitate = document.getElementById('precipitate');
+      const milkStream = document.getElementById('milk-stream');
+      const waterStream = document.getElementById('water-stream');
+      const phMeter = document.querySelector('.ph-meter');
+      const resetBtn = document.getElementById('reset');
+      const steps = document.querySelectorAll('.step');
+      const results = document.getElementById('results');
+      
+      // Experiment state
+      let currentStep = 1;
+      let pH = 7.0;
+      let beakerFill = 0;
+      let hasAcidInDropper = false;
+      let isExperimentComplete = false;
+      
+      // Initialize step highlighting
+      updateSteps();
+      
+      // Make elements draggable
+      makeDraggable(milk, pourMilk);
+      makeDraggable(water, pourWater);
+      makeDraggable(dropper, handleDropper);
+      
+      // Reset button
+      resetBtn.addEventListener('click', resetExperiment);
+      
+      // Draggable function
+      function makeDraggable(element, onDrop) {
+        let isDragging = false;
+        let offsetX, offsetY;
+        let originalX, originalY;
+        
+        element.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', endDrag);
+        
+        function startDrag(e) {
+          if (isExperimentComplete) return;
+          
+          isDragging = true;
+          offsetX = e.clientX - element.getBoundingClientRect().left;
+          offsetY = e.clientY - element.getBoundingClientRect().top;
+          
+          originalX = element.style.left ? parseInt(element.style.left) : 
+                     parseInt(window.getComputedStyle(element).getPropertyValue('left'));
+          originalY = element.style.top ? parseInt(element.style.top) : 
+                     parseInt(window.getComputedStyle(element).getPropertyValue('top'));
+          
+          element.style.cursor = 'grabbing';
+          element.style.zIndex = '100';
+        }
+        
+        function drag(e) {
+          if (!isDragging) return;
+          
+          element.style.left = (e.clientX - offsetX) + 'px';
+          element.style.top = (e.clientY - offsetY) + 'px';
+        }
+        
+        function endDrag(e) {
+          if (!isDragging) return;
+          isDragging = false;
+          element.style.cursor = 'grab';
+          element.style.zIndex = '10';
+          
+          // Check if dropped on beaker
+          const beakerRect = beaker.getBoundingClientRect();
+          const elementRect = element.getBoundingClientRect();
+          
+          if (
+            elementRect.right > beakerRect.left &&
+            elementRect.left < beakerRect.right &&
+            elementRect.bottom > beakerRect.top &&
+            elementRect.top < beakerRect.bottom
+          ) {
+            onDrop();
+          } else {
+            // Return to original position
+            anime({
+              targets: element,
+              left: originalX,
+              top: originalY,
+              duration: 500,
+              easing: 'easeOutQuad'
+            });
+          }
+        }
+      }
+      
+      // Milk pouring function
+      function pourMilk() {
+        if (currentStep !== 1) return;
+        
+        // Position milk above beaker
+        anime({
+          targets: milk,
+          left: '45%',
+          bottom: '220px',
+          rotate: 30,
+          duration: 800,
+          easing: 'easeInOutQuad'
+        });
+        
+        // Create pouring stream
+        milkStream.style.left = '47%';
+        milkStream.style.bottom = '220px';
+        milkStream.style.height = '100px';
+        
+        anime({
+          targets: milkStream,
+          opacity: 1,
+          duration: 300
+        });
+        
+        // Fill beaker
+        anime({
+          targets: beakerContents,
+          height: '50%',
+          duration: 2000,
+          easing: 'linear',
+          complete: function() {
+            milkStream.style.opacity = '0';
+            completeStep(1);
+          }
+        });
+      }
+      
+      // Water pouring function
+      function pourWater() {
+        if (currentStep !== 2) return;
+        
+        // Position water above beaker
+        anime({
+          targets: water,
+          left: '50%',
+          bottom: '220px',
+          rotate: -30,
+          duration: 800,
+          easing: 'easeInOutQuad'
+        });
+        
+        // Create pouring stream
+        waterStream.style.left = '52%';
+        waterStream.style.bottom = '220px';
+        waterStream.style.height = '100px';
+        
+        anime({
+          targets: waterStream,
+          opacity: 1,
+          duration: 300
+        });
+        
+        // Fill beaker more
+        anime({
+          targets: beakerContents,
+          height: '80%',
+          duration: 2000,
+          easing: 'linear',
+          complete: function() {
+            waterStream.style.opacity = '0';
+            completeStep(2);
+          }
+        });
+      }
+      
+      // Dropper handling function
+      function handleDropper() {
+        const acidRect = acid.getBoundingClientRect();
+        const dropperRect = dropper.getBoundingClientRect();
+        const beakerRect = beaker.getBoundingClientRect();
+        
+        // Check if dropper is over acid jar
+        if (
+          dropperRect.right > acidRect.left &&
+          dropperRect.left < acidRect.right &&
+          dropperRect.bottom > acidRect.top &&
+          dropperRect.top < acidRect.bottom
+        ) {
+          if (currentStep === 3) {
+            // Dip into acid
+            anime({
+              targets: dropper,
+              bottom: '150px',
+              duration: 500,
+              easing: 'easeInOutQuad',
+              complete: function() {
+                hasAcidInDropper = true;
+                anime({
+                  targets: dropper,
+                  bottom: '180px',
+                  duration: 500,
+                  easing: 'easeInOutQuad',
+                  complete: function() {
+                    completeStep(3);
+                  }
+                });
+              }
+            });
+          }
+        }
+        // Check if dropper is over beaker with acid
+        else if (
+          hasAcidInDropper &&
+          dropperRect.right > beakerRect.left &&
+          dropperRect.left < beakerRect.right &&
+          dropperRect.bottom > beakerRect.top &&
+          dropperRect.top < beakerRect.bottom
+        ) {
+          if (currentStep === 4) {
+            // Add acid to beaker
+            addAcidDrop();
+          }
+        }
+      }
+      
+      // Add acid drop to beaker
+      function addAcidDrop() {
+        // Create drop element
+        const drop = document.createElement('div');
+        drop.style.position = 'absolute';
+        drop.style.width = '10px';
+        drop.style.height = '10px';
+        drop.style.backgroundColor = '#ff5555';
+        drop.style.borderRadius = '50%';
+        drop.style.left = '50%';
+        drop.style.bottom = '220px';
+        drop.style.transform = 'translateX(-50%)';
+        document.querySelector('.workspace').appendChild(drop);
+        
+        // Animate drop falling
+        anime({
+          targets: drop,
+          bottom: '120px',
+          opacity: 0,
+          duration: 800,
+          easing: 'easeInQuad',
+          complete: function() {
+            drop.remove();
+            
+            // Update pH
+            pH -= 0.1;
+            phMeter.textContent = `pH: ${pH.toFixed(1)}`;
+            
+            // Check for precipitation
+            if (pH <= 4.6 && precipitate.style.height === '0px') {
+              showPrecipitation();
+            }
+            
+            // Reset dropper
+            hasAcidInDropper = false;
+            
+            // Complete step if first drop
+            if (currentStep === 4) {
+              completeStep(4);
+            }
+          }
+        });
+      }
+      
+      // Show protein precipitation
+      function showPrecipitation() {
+        anime({
+          targets: precipitate,
+          height: '20%',
+          duration: 2000,
+          easing: 'easeOutQuad',
+          complete: function() {
+            isExperimentComplete = true;
+            results.style.display = 'block';
+            completeStep(5);
+          }
+        });
+      }
+      
+      // Complete a step
+      function completeStep(stepNumber) {
+        steps[stepNumber - 1].classList.add('completed');
+        currentStep = stepNumber + 1;
+        updateSteps();
+      }
+      
+      // Update step highlighting
+      function updateSteps() {
+        steps.forEach((step, index) => {
+          step.classList.remove('current-step');
+          if (index === currentStep - 1 && !step.classList.contains('completed')) {
+            step.classList.add('current-step');
+          }
+        });
+      }
+      
+      // Reset experiment
+      function resetExperiment() {
+        // Reset positions
+        anime({
+          targets: [milk, water, dropper],
+          left: ['10%', '20%', '85%'],
+          bottom: '180px',
+          rotate: 0,
+          duration: 500
+        });
+        
+        // Reset beaker contents
+        anime({
+          targets: [beakerContents, precipitate],
+          height: 0,
+          duration: 500
+        });
+        
+        // Reset streams
+        milkStream.style.opacity = '0';
+        waterStream.style.opacity = '0';
+        
+        // Reset state
+        currentStep = 1;
+        pH = 7.0;
+        hasAcidInDropper = false;
+        isExperimentComplete = false;
+        phMeter.textContent = 'pH: 7.0';
+        
+        // Reset steps
+        steps.forEach(step => {
+          step.classList.remove('completed', 'current-step');
+        });
+        updateSteps();
+        
+        // Hide results
+        results.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milk Pour Animation</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    body {
+      background: #4603fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .scene {
+      position: relative;
+      width: 350px;
+      height: 400px;
+    }
+
+    #bottle {
+      position: absolute;
+      width: 100px;
+      top: 80px;
+      left: 0;
+      transform-origin: top left;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    #milk-stream {
+      position: absolute;
+      width: 8px;
+      height: 0;
+      background: white;
+      opacity: 0.5;
+      left: 120px;
+      top: 190px;
+      border-radius: 4px;
+      z-index: 3;
+    }
+
+    .beaker {
+      position: absolute;
+      bottom: 30px;
+      left: 100px;
+      width: 100px;
+      height: 150px;
+      z-index: 1;
+    }
+
+    .beaker img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    #milk-fill {
+      position: absolute;
+      bottom: 30px;
+      left: 100px;
+      width: 100px;
+      height: 0;
+      background: white;
+      opacity: 0.6;
+      z-index: 1;
+      mix-blend-mode: screen;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <img src="assets/milk.png" id="bottle" alt="Milk Bottle" onclick="togglePour()" />
+    <div id="milk-stream"></div>
+
+    <div class="beaker">
+      <img src="assets/EmptyBeaker.png" alt="Beaker">
+    </div>
+
+    <div id="milk-fill"></div>
+  </div>
+
+  <script>
+    let isPouring = false;
+    let milkLevel = 0;
+    const maxLevel = 120; // max height in px
+    let pourInterval;
+
+    function togglePour() {
+      const bottle = document.getElementById("bottle");
+      const stream = document.getElementById("milk-stream");
+      const fill = document.getElementById("milk-fill");
+
+      if (!isPouring) {
+        // Start pouring
+        isPouring = true;
+
+        // Animate bottle tilt
+        anime({
+          targets: bottle,
+          rotate: 45,
+          duration: 400,
+          easing: 'easeInOutSine'
+        });
+
+        // Animate milk stream down
+        anime({
+          targets: stream,
+          height: '100px',
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+
+        // Start filling gradually
+        pourInterval = setInterval(() => {
+          if (milkLevel >= maxLevel) {
+            stopPour();
+            return;
+          }
+          milkLevel += 1;
+          fill.style.height = milkLevel + 'px';
+        }, 30);
+      } else {
+        stopPour();
+      }
+    }
+
+    function stopPour() {
+      const bottle = document.getElementById("bottle");
+      const stream = document.getElementById("milk-stream");
+
+      isPouring = false;
+      clearInterval(pourInterval);
+
+      // Animate bottle back
+      anime({
+        targets: bottle,
+        rotate: 0,
+        duration: 400,
+        easing: 'easeInOutSine'
+      });
+
+      // Animate milk stream up
+      anime({
+        targets: stream,
+        height: '0px',
+        duration: 300,
+        easing: 'easeOutQuad'
+      });
+    }
+  </script>
+</body>
+</html>

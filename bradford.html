@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller Scale in Div</title>
+<style>
+    /* Table at bottom */
+    .table {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    /* Apparatus above table */
+    .apparatus {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        gap: 15px;
+        align-items: flex-end;
+    }
+
+    .pipette {
+        touch-action: none;
+        cursor: grab;
+        z-index: 10;
+        transition: transform 0.5s ease;
+    }
+
+    .scale-container {
+        background-color: rgb(193, 141, 141);
+        height: 800px; /* Increased height */
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    @keyframes dropFall {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(80px); opacity: 0; }
+    }
+
+    .drop {
+        position: absolute;
+        width: 10px;
+        height: 15px;
+        pointer-events: none;
+        animation: dropFall 0.5s linear forwards;
+    }
+
+    .scale-container img {
+        position: absolute;
+        top: 20%;
+        left: 31%;
+        height: 100%;
+        width: 10%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        transform-origin: center;
+    }
+
+    .shelf-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .samples {
+        position: absolute;
+        top: 55px;
+        left: 90px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 40px 70px;
+    }
+
+    .samples img {
+        height: 60px;
+    }
+</style>
+</head>
+<body>
+
+<div class="scale-container">
+    <img src="scale.png" alt="Scale">
+    <!-- Pipettes -->
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 8%;" class="pipette" id="pipette98">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 13%;" class="pipette" id="pipette2">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 18%;" class="pipette" id="pipette0125">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 24%;" class="pipette" id="pipette025">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 29%;" class="pipette" id="pipette05">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 35%;" class="pipette" id="pipette075">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 40%;" class="pipette" id="pipette1">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 45%;" class="pipette" id="pipette15">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 50%;" class="pipette" id="pipette2.0">
+    <img src="unfilled pipette.png" alt="" style="height: 50px; width: 50px; top: 30%; left: 55%;" class="pipette" id="pipette20">
+</div>
+
+<!-- Apparatus -->
+<div class="apparatus">
+    <img src="bradford.png" alt="" height="250" id="bradford">
+    <img src="milk filled tube.png" alt="Milk Filled Tube" height="250" id="milk-tube">
+    <img src="pbs filled tube.png" alt="PBS Filled Tube" height="250" id="pbs-tube">
+    <img src="microcentrifuge empty.png" alt="microtube" height="150" id="microtube">
+
+    <!-- Cuvettes -->
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+    <img src="cuvette.png" alt="" height="150" class="cuvette">
+
+    <!-- Shelf -->
+    <div class="shelf-container">
+        <img src="shelf.png" alt="Shelf" height="420" id="shelf">
+        <div class="samples">
+            <img src="green sample.png" alt="" id="green-sample">
+            <img src="yellow sample.png" alt="" id="yellow-sample">
+            <img src="brown sample.png" alt="" id="brown-sample">
+            <img src="pink sample.png" alt="" id="pink-sample">
+            <img src="red sample.png" alt="" id="red-sample">
+            <img src="orange sample.png" alt="" id="orange-sample">
+            <img src="blue sample.png" alt="" id="blue-sample">
+        </div>
+    </div>
+</div>
+<!--animation gif
+<img src="filled-cuvette-animation.gif" alt="">-->
+
+
+<!-- Table -->
+<div class="table">
+    <img src="bg.png" alt="Lab Table" height="300">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script>
+const pipette = document.getElementById("pipette98");
+const microtube = document.getElementById("microtube");
+const pbsTube = document.getElementById("pbs-tube");
+const milkTube = document.getElementById("milk-tube");
+// Make PBS tube a dropzone
+interact('#pbs-tube').dropzone({
+    accept: '#pipette98',
+    ondrop: () => {
+        if (pipetteState === "empty") {
+            pipette.src = "pbsfilled pipette.png";
+            pipetteState = "pbs";
+        }
+    }
+});
+
+// Make milk tube a dropzone
+interact('#milk-tube').dropzone({
+    accept: '#pipette98',
+    ondrop: () => {
+        if (pipetteState === "empty") {
+            pipette.src = "milkfilled pipette.png";
+            pipetteState = "milk";
+        }
+    }
+});
+// Create droplet at pipette tip
+function createDropFromPipette() {
+    let pipetteRect = pipette.getBoundingClientRect();
+    let apparatusRect = document.querySelector('.apparatus').getBoundingClientRect();
+
+    // Position tip near bottom-right of pipette image
+    let tipX = pipetteRect.left + pipetteRect.width*0.3  - apparatusRect.left;
+    let tipY = pipetteRect.bottom - apparatusRect.top - 5;
+
+    let drop = document.createElement('img');
+    drop.src = "drop.png";
+    drop.classList.add('drop');
+    drop.style.left = `${tipX}px`;
+    drop.style.top = `${tipY}px`;
+
+    document.querySelector('.apparatus').appendChild(drop);
+    setTimeout(() => drop.remove(), 500);
+}
+// Make microtube a dropzone
+interact('#microtube').dropzone({
+    accept: '#pipette98',
+    ondrop: () => {
+        if (pipetteState === "pbs" && microtubeState === "empty") {
+            // Start droplet animation
+            let dropInterval = setInterval(createDropFromPipette, 150);
+
+            setTimeout(() => {
+                clearInterval(dropInterval); // stop after pouring
+                microtube.src = "pbs filled micricentrifuge.png";
+                microtubeState = "pbs";
+                pipette.src = "unfilled pipette.png";
+                pipetteState = "empty";
+            }, 1000); // total pour time
+        } 
+        else if (pipetteState === "milk" && microtubeState === "pbs") {
+            // Start droplet animation
+            let dropInterval = setInterval(createDropFromPipette, 150);
+
+            setTimeout(() => {
+                clearInterval(dropInterval); // stop after pouring
+                microtube.src = "pbs+milk filled microcentrifuge.png";
+                microtubeState = "pbs+milk";
+                pipette.src = "unfilled pipette.png";
+                pipetteState = "empty";
+            }, 1000);
+        }
+    }
+});
+
+let pipetteState = "empty"; // empty, pbs, milk
+let microtubeState = "empty"; // empty, pbs, pbs+milk
+
+/* ---------------- BASIC DRAG SETUP ---------------- */
+interact('.pipette').draggable({
+    inertia: true,
+    listeners: {
+        move (event) {
+            const target = event.target;
+            const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+            const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+            target.style.transform = `translate(${x}px, ${y}px)`;
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+        }
+    }
+});
+
+/* ---------------- PIPETTE–SAMPLE–CUVETTE MAPPINGS ---------------- */
+const mappings = [
+    { pipette: "pipette0125", sample: "green-sample", cuvette: 0 },
+    { pipette: "pipette025",  sample: "yellow-sample", cuvette: 1 },
+    { pipette: "pipette05",   sample: "brown-sample", cuvette: 2 },
+    { pipette: "pipette075",  sample: "pink-sample", cuvette: 3 },
+    { pipette: "pipette1",    sample: "red-sample", cuvette: 4 },
+    { pipette: "pipette15",   sample: "orange-sample", cuvette: 5 },
+    { pipette: "pipette2.0",   sample: "blue-sample", cuvette: 6 }
+];
+
+const cuvettes = document.querySelectorAll('.cuvette');
+
+mappings.forEach(({ pipette, sample, cuvette }) => {
+    let pipetteEl = document.getElementById(pipette);
+    let sampleEl = document.getElementById(sample);
+    let cuvetteEl = cuvettes[cuvette];
+
+    let pipetteState = "empty";
+    let cuvetteState = "empty";
+
+    // Sample dropzone
+    interact(`#${sample}`).dropzone({
+        accept: `#${pipette.replace('.', '\\.')}`,
+        ondrop: () => {
+            if (pipetteState === "empty") {
+                pipetteEl.src = "sample filled pipette.png";
+                pipetteState = "sample";
+            }
+        }
+    });
+
+// Cuvette dropzone
+interact(cuvetteEl).dropzone({
+    accept: `#${pipette.replace('.', '\\.')}`,
+    ondrop: () => {
+        if (pipetteState === "sample" && cuvetteState === "empty") {
+            // Droplet animation (falling drops)
+            let dropInterval = setInterval(() => {
+                let pipetteRect = pipetteEl.getBoundingClientRect();
+                let apparatusRect = document.querySelector('.apparatus').getBoundingClientRect();
+                let tipX = pipetteRect.left + pipetteRect.width * 0.3 - apparatusRect.left;
+                let tipY = pipetteRect.bottom - apparatusRect.top - 5;
+                let drop = document.createElement('img');
+                drop.src = "drop.png";
+                drop.classList.add('drop');
+                drop.style.left = `${tipX}px`;
+                drop.style.top = `${tipY}px`;
+                document.querySelector('.apparatus').appendChild(drop);
+                setTimeout(() => drop.remove(), 500);
+            }, 150);
+
+            // Show filling GIF
+            cuvetteEl.src = "filled-cuvette-animation.gif";
+
+            setTimeout(() => {
+                clearInterval(dropInterval);
+                cuvetteEl.src = "filled cuvette.png"; // Final static filled image
+                cuvetteState = "filled";
+                pipetteEl.src = "unfilled pipette.png";
+                pipetteState = "empty";
+            }, 2000); // Total pour time (match GIF duration)
+        }
+    }
+});
+
+});
+</script>
+</body>
+</html>

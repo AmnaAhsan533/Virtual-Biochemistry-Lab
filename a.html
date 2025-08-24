@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cup-Animation</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.line{
+    display: none;
+    position: absolute;
+    width: 5px;
+    height: 258px;
+    top: 29px;
+    left: 100px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, rgb(131, 212, 239), rgb(13, 162, 237));
+    transform: scaleY(0);
+    transform-origin: top center;
+    z-index: 0;
+    mix-blend-mode: hue;
+}
+
+.two{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 150px;
+    height: 250px;
+    padding: 10px 0px;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 100px;
+    cursor: pointer;
+}
+
+.image img{
+    width: 100%;
+    height: 100%;
+    transform: rotateZ(45deg);
+}
+
+.setAfter{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-image: linear-gradient(to bottom, rgb(131, 212, 239), rgb(13, 162, 237));
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    z-index: -1;
+    transition: transform 3s;
+}
+    </style>
+</head>
+<body>
+
+    <div class="body">
+
+        <div class="one">
+            <div class="image" id="paint">
+                <img src="img.png" id="img" alt="img">
+            </div>
+            <div class="line" id="pipe"></div>
+        </div>
+        <div class="two" id="cup">
+            <div class="setAfter" id="fillcup"></div>
+        </div>
+        
+    </div>
+    
+
+
+    <script>
+        const paint = document.getElementById("paint");
+const img = document.getElementById("img");
+const cup = document.getElementById("cup");
+const fillcup = document.getElementById("fillcup");
+const pipe = document.getElementById("pipe");
+
+let isClick = false
+
+paint.addEventListener("click", ()=>{
+    if(!isClick){
+        img.style.transform="rotateZ(0deg)";
+        img.style.transition="transform 1s";
+        pipe.style.display="flex";
+
+        setTimeout(()=>{
+            pipe.style.transform="scaleY(1)";
+            pipe.style.transition="transform 1s";
+        },600)
+        setTimeout(()=>{
+            fillcup.style.transform="scaleY(1)";
+            img.style.transition="transform 3s";
+        },1500)
+        setTimeout(()=>{
+            pipe.style.display="none";
+        },4500)
+        isClick = true
+    }
+    else{
+        pipe.style.display="flex";
+        fillcup.style.transform="scaleY(0)";
+        img.style.transition="transform 3s";
+
+        setTimeout(()=>{
+            pipe.style.transform="scaleY(0)";
+            pipe.style.transition="transform 1s";
+        },2500)
+        setTimeout(()=>{
+            pipe.style.display="none";
+            img.style.transform="rotateZ(45deg)";
+            img.style.transition="transform 1s";
+        },3500)
+        isClick=false;
+    }
+})
+    </script>
+</body>
+</html>
