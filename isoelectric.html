@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Isoelectric Precipitation</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style(iso).css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+  <a href="#" class="sidebar-link theory-link" onclick="openSection('theory')">
+    <i class='bx bx-reading'></i> Theory
+  </a>
+  <a href="#" class="sidebar-link simulation-link" onclick="openSection('simulation')">
+    <i class='bx bx-vial'></i> Simulation
+  </a>
+  <a href="#" class="sidebar-link quiz-link" onclick="openSection('quiz')">
+    <i class='bx bx-intellect'></i> Quiz
+  </a>
+  <a href="#" class="sidebar-link reading-link" onclick="openSection('reading')">
+    <i class='bx bx-book'></i> Additional Reading
+  </a>
+  <a href="#" class="sidebar-link reference-link" onclick="openSection('reference')">
+    <i class='bx bx-link'></i> References
+  </a>
+  <a class="sidebar-link back" href="lab.html">
+    <i class='bx bx-arrow-left'></i> Go Back
+  </a>
+</div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger" onclick="toggleSidebar()">
+      <i class='bxr  bx-menu'  ></i> 
+    </button>
+
+    <!-- Content -->
+    <div class="content" id="content">
+      <!--Theory-->
+      <div id="theory" class="section active">
+        <h1>Isoelectric Precipitation of Protein<i class='bxr  bx-beaker'  ></i> </h1>
+        <p style="text-align: center">
+          To perform the isoelectric precipitation of caesin present in milk.
+        </p>
+        <div class="accordion active">
+          <div class="accordion-header">
+            Principle <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Isoelectric precipitation of milk protein involves lowering the pH
+              to the isoelectric point of milk protein (casein) i.e around pH
+              4.6. At this pH, protein's net electrical charge becomes zero
+              causing electrostatic repulsion to cease and leading to minimal
+              solubility, that results precipitation of milk protein.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Theory <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Bovine milk contains four types of caseins denoted as αs1- casein,
+              αs2-casein, β-casein, and κ-casein, each of which is the product
+              of specific genes. The caseins, which are synthesized in the
+              mammary gland, are proteins containing ester-bound phosphate and
+              due to their relatively high content of proline, they tend to have
+              very little secondary structure. Proteins are less soluble at
+              their isoelectric point where they have zero net charge and can
+              most easily approach each other with minimal charge repulsion.
+              Since proteins are also less soluble at very low ionic strength,
+              isoelectric precipitation is usually done at very low or no salt.
+              Isoelectric precipitation is a simple and cost effective method
+              that exploits the reduced solubility of proteins at their pI. By
+              adjusting the solution pH to the target protein's pI, the protein
+              becomes electrically neutral, leading to aggregation and
+              precipitation. The precipitate is then isolated via centrifugation
+              or filtration. This method is effective for bulk protein
+              purification, such as in dairy processing (e.g., casein
+              isolation), and is scalable for industrial applications. However,
+              it has poor specificity for proteins with overlapping pI values
+              and may co-precipitate impurities, necessitating additional
+              purification steps. Despite these limitations, isoelectric
+              precipitation remains a popular choice for largescale protein
+              recovery in food science and biotechnology.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Materials Required <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <ol>
+              <li>Beaker</li>
+              <li>Hot plate with magnet stirrer</li>
+              <li>Thermometer</li>
+              <li>pH meter</li>
+              <li>Buchner funnel and filter paper</li>
+              <li>Vacuum filtration setup</li>
+              <li>Ice bath</li>
+              <li>Stirring rod</li>
+              <li>Graduated cylinder</li>
+              <li>Skimmed milk - 100ml</li>
+              <li>0.2N HCl or 5%acetic acid - 50ml</li>
+              <li>Distilled water</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Procedure <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <ol>
+              <li>
+                The starting material for the production of casein is skimmed
+                milk. The use of skim milk ensures that the fat content of the
+                casein is low enough to minimize flavor defects arising from
+                deterioration of lipids in the dried casein products.
+              </li>
+              <li>
+                Following destabilization, the insoluble casein is separated
+                from the soluble whey proteins, lactose, and salts, washed to
+                remove residual soluble solids, and then dried.
+              </li>
+              <li>
+                Casein can be produced in a number of ways, however industrially
+                they are produced either by isoelectric precipitation or
+                proteolytic coagulation.
+              </li>
+              <li>
+                During isoelectric precipitation, the pH of the skim milk is
+                reduced to the isoelectric point of casein.
+              </li>
+              <li>
+                The pH decrease can be achieved by addition of a culture of
+                lactic acid bacteria (converting some of the lactose of the milk
+                to lactic acid), or by addition of a dilute mineral (HCl) or
+                organic acid (acetic acid). The pH of skim milk can also be
+                reduced to the isoelectric point of casein by mixing all or part
+                of the milk with an ion-exchange resin at low temperature.
+              </li>
+              <li>
+                In the manufacture of acid casein, precipitation is accomplished
+                by under-pressure spraying dilute mineral acids (usually HCl)
+                into preheated milk (25-30°C) flowing in the opposite direction
+                until a pH of 4.6 is reached. Subsequently, steam is injected to
+                heat the acidified milk to the precipitation temperature of
+                about 50°C.
+              </li>
+              <li>
+                As the pH of milk is falling towards the isoelectric point of
+                casein, a casein gel network (the coagulum) is formed, with good
+                waterholding capacity. The coagulum is then pumped from the
+                coagulation vats and cooked by direct steam injection.
+              </li>
+            </ol>
+            <p>
+              <b>In a Laboratory setting, </b>you can follow protocol as given
+              below;
+            </p>
+            <ol>
+              <li>
+                Measure 100.0 ml of skim milk and add into a beaker. If you are
+                not using skim milk, centrifuge the milk using centrifuge tubes
+                to remove the fat. Centrifuge the milk at 4000 rpm at room
+                temperature (25-30 °C) for 20 minutes. When centrifuging
+                non-skim milk, the fat collects on top and should be removed
+                before heating the milk in the next step.
+              </li>
+              <li>
+                Transfer milk from all the tubes into the beaker and add equal
+                volume of distilled water and stir well. Now check the pH ( milk
+                pH= 6.7). Bring the temperature of the solution to 40°C.
+              </li>
+              <li>
+                Start adding 0.2N HCl drop by drop into the milk. Keep stirring
+                and monitor the pH using a pH electrode. The milk should start
+                to curdle. If necessary, add more acid drop by drop until the pH
+                reaches 4.6, which is the isoelectric point of casein. (You can
+                also use 5% acetic acid instead of 0.2N HCl).
+              </li>
+              <li>
+                Remove the mixture from the heat and let it stand for 5 minutes.
+              </li>
+              <li>
+                Prepare an ice bath and cool the mixture for 10 minutes,
+                stirring occasionally.
+              </li>
+              <li>
+                Set up the vacuum filtration apparatus with a Buchner funnel and
+                filter paper.
+              </li>
+              <li>
+                Filter the cooled mixture to separate the precipitated casein
+                from the whey.
+              </li>
+              <li>
+                Rinse the precipitate with cold distilled water to remove any
+                remaining acid.
+              </li>
+              <li>
+                Transfer the casein to a pre-weighed filter paper and let it air
+                dry overnight.
+              </li>
+              <li>Weigh the dried casein and calculate the yield.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Differences Encountered in a Real Laboratory
+            <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <ol>
+              <li>
+                Calibrate the pH meter with standard buffer before you start the
+                experiment. Make sure the pH meter is working properly.
+              </li>
+              <li>
+                Rinse pH electrode thoroughly with distilled water, and place it
+                in a 250.0 ml beaker containing approximately 100.0 to 150.0 ml
+                of distilled water.
+              </li>
+              <li>
+                Make sure that the pH electrode is properly dipped in the
+                storage solution after completion of the experiment.
+              </li>
+              <li>
+                Always wear personal protective equipment when you are in the
+                lab. When you enter the lab, switch on the exhaust fan and make
+                sure that all the reagents required for the experiment are
+                available. If it is not available, prepare the reagents using
+                the components shown in the reagent preparation.
+              </li>
+              <li>
+                Always wear chemical splash goggles while working on this
+                experiment.
+              </li>
+              <li>Wear gloves while handling chemicals.</li>
+              <li>Use caution when handling hot liquids and equipment.</li>
+              <li>
+                Even in dilute form, Acetic acid can cause skin irritation.
+                Rinse immediately if contact occurs.
+              </li>
+              <li>
+                Ensure proper ventilation when working with acid. All liquids
+                used in this experiment should be handled under a fume hood.
+              </li>
+              <li>
+                Dispose of all waste in the designated containers, as instructed
+                by your instructor.
+              </li>
+              <li>
+                When finished, thoroughly clean your work area and return all
+                equipment and chemicals to their appropriate places.
+              </li>
+              <li>Wash your hands before you leave.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!--Simulation-->
+      <div id="simulation" class="section">
+        <div class="simulation-container">
+          <div class="lab-area">
+            <h2 style="text-align: center; color: #60a5fa">
+              Apparatus Layout
+            </h2>
+            <div class="table-surface">
+              <div class="beaker-wrapper">
+                <img
+                  src="assets/stand.png"
+                  class="apparatus beaker"
+                  id="beaker"
+                  alt="Beaker"
+                />
+                <img src="assets/drop.webp" alt="drop" id="drop" />
+                <div class="dropper-area">
+                  <div id="dropper"></div>
+                  <p>Add HCl</p>
+                </div>
+                <div id="precipitate"></div>
+                <div id="milk-fill"></div>
+                <div id="water-fill"></div>
+              </div>
+              <img
+                src="assets/milk.png"
+                class="apparatus"
+                id="milk"
+                alt="Milk Jar"
+              />
+              <div id="milk-stream"></div>
+              <div id="water-stream"></div>
+
+              <img
+                src="assets/water.png"
+                class="apparatus water"
+                id="water"
+                alt="Distilled Water"
+              />
+            </div>
+          </div>
+          <div class="ins-area">
+            <h2 style="text-align: center; color: #60a5fa">Instruction</h2>
+            <ul>
+              <li>Drag <strong>Milk</strong> into the beaker.</li>
+              <li>
+                Then drag <strong>Distilled Water</strong> to equalize volume.
+              </li>
+              <li>Click on <strong>Stopper</strong> to add HCl.</li>
+              <li>
+                Each drop decreases the pH. Precipitation appears at pH = 4.6
+              </li>
+            </ul>
+            <button id="reset-btn">Reset</button>
+          </div>
+        </div>
+      </div>
+      <!--Quiz-->
+      <div id="quiz" class="section">
+        <h1>
+          Quiz: Isoelectric Precipitation
+          <span><i class='bxr  bx-medical-flask'></i> </span>
+        </h1>
+
+        <div id="quiz-container" class="quiz-container">
+          <div id="question-box"></div>
+
+          <div class="quiz-controls">
+            <button id="prev-btn" class="quiz-btn">Previous</button>
+            <button id="next-btn" class="quiz-btn">Next</button>
+            <button id="submit-btn" class="quiz-btn" style="display: none">
+              Submit
+            </button>
+            <button id="reset-quiz" class="quiz-btn">Reset</button>
+          </div>
+
+          <div id="result" class="quiz-result"></div>
+        </div>
+      </div>
+      <!--Reading Material-->
+      <div id="reading" class="section">
+        <h1>Additional Reading</h1>
+        <div class="book-list">
+          <div class="book-card">
+            <h3>Methods in Enzymology</h3>
+            <a href="assets/Methods in Enzymology.pdf" target="_blank"
+              >Open PDF</a
+            >
+          </div>
+
+          <div class="book-card">
+            <h3>Dairy Based Ingredients</h3>
+            <a href="assets/Dairy Based Ingredients.pdf" target="_blank"
+              >Open PDF</a
+            >
+          </div>
+        </div>
+      </div>
+      <!--References-->
+      <div id="reference" class="section">
+        <h1>References</h1>
+        <div class="references-container">
+          <a
+            href="https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/isoelectric-precipitation#:~:text=Isoelectric%20Precipitation%20%2D%20an%20overview%20%7C%20ScienceDirect,on:%20Methods%20in%20Enzymology%2C%202009"
+            class="ref-link"
+            target="_blank"
+            >ScienceDirect</a>
+        </div>
+        <div class="references-container">
+          <a
+            href="https://www.chemistry.mcmaster.ca/~chem2o6/labmanual/expt11/2o6exp11.html"
+            class="ref-link"
+            target="_blank"
+            >McMaster University</a>
+        </div>
+        <div class="references-container">
+          <a
+            href="https://chem.libretexts.org/Courses/Triton_College/Elementary_Organic_Chemistry_(Lab_Manual)/12%3A_LAB_12_-_ISOLATION_OF_MILK_PROTEIN_(CASEIN)"
+            class="ref-link"
+            target="_blank"
+            >LibreTexts</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="iso.js"></script>
+  </body>
+</html>
