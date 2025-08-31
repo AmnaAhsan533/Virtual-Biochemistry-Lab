@@ -86,3 +86,25 @@ function continueAsGuest() {
   localStorage.setItem("isLoggedIn", false);
   window.location.href = "lab.html";
 }
+
+const container = document.querySelector('.bubble-container');
+
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+  
+  const size = Math.random() * 12 + 5; // 5px–15px
+  bubble.style.width = `${size}px`;
+  bubble.style.height = `${size}px`;
+  
+  bubble.style.left = `${Math.random() * 70}px`; // spread inside container
+  
+  bubble.style.animationDuration = `${Math.random() * 1.5 + 2}s`; // 2–4 sec
+  
+  container.appendChild(bubble);
+  
+  setTimeout(() => bubble.remove(), 4000);
+}
+
+setInterval(createBubble, 300); // bubble every 0.3s
+
