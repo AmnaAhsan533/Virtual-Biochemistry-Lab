@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources</title>
+  <style>
+    body{
+        font-family: "Poppins", sans-serif;
+        background-color: #0f172a;
+        color: #cbd5e1;
+        margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color: #60a5fa
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Each resource item */
+    .item {
+      background: white;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+
+    /* Hover effect */
+    .item:hover {
+      background: #007BFF;
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    .emoji {
+      font-size: 1.4em;
+      flex-shrink: 0;
+    }
+
+    .item a {
+      text-decoration: none;
+      font-weight: bold;
+      color: inherit;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Mobile adjastments */
+    @media (max-width: 600px) {
+      .item a { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Resources</h1>
+
+  <div class="grid">
+    <div class="item"><span class="emoji">📘</span><a href="books/6.1-Biochemistry Rapid.pdf" target="_blank">Biochemistry Rapid</a></div>
+    <div class="item"><span class="emoji">📘</span><a href="books/marshall CLINICAL BIOCHEMISTRY_compressed.pdf" target="_blank">Marshall Clinical Biochemsitry</a></div>
+    <div class="item"><span class="emoji">📘</span><a href="books/Biochemistry and Its Application (Arcler Press, 2023).pdf" target="_blank">Biochemistry and Its Application (Arcler Press, 2023)</a></div>
+    <div class="item"><span class="emoji">📘</span><a href="books/BIOCHEMISTRY-U Satyanarayana & U Chakrapani.pdf" target="_blank">Biochemistry by U Satyanarayana & U Chakrapani</a></div>
+  </div>
+
+  <div class="grid">
+    <div class="item"><span class="emoji">📗</span><a href="books/Bioinformatics_ A Practical Guide to the Analysis of Genes and Proteins (Andreas D. Baxevanis).pdf" target="_blank">Bioinformatics 2nd Ed</a></div>
+    <div class="item"><span class="emoji">📗</span><a href="books/Bioinformatics_ From Genomes to Drugs.pdf" target="_blank">Bioinformatics:from Genomes to Drugs Vol.1 and Vol.2</a></div>
+    <div class="item"><span class="emoji">📗</span><a href="books/Bioinformatics_ Sequence and Genome Analysis (2004, Cold Spring Harbor Laboratory Press).pdf" target="_blank">Bioinformatics:Sequence and Genome Analysis by David W.Mount</a></div>
+    <div class="item"><span class="emoji">📗</span><a href="books/Copy of Clinical Biochemistry  An Illustrated Colour Text, 5e.pdf" target="_blank">Clinical Biochemistry 5th Ed</a></div>
+  </div>
+
+  <div class="grid">
+    <div class="item"><span class="emoji">📕</span><a href="books/Lippincott Biochemistry_compressed.pdf" target="_blank">Lippincott Biochemistry</a></div>
+    <div class="item"><span class="emoji">📕</span><a href="books/Fundamental_Concepts_in_Biophysics.pdf" target="_blank">Fundamental Concepts in Biophysics</a></div>
+    <div class="item"><span class="emoji">📕</span><a href="books/gene-and-genomics.pdf" target="_blank">Principles of Gene Manipulation and Genomics</a></div>
+    <div class="item"><span class="emoji">📕</span><a href="books/Genetics A Conceptual Approach - Pierce, B. A.pdf" target="_blank">Genetics A Conceptual Approach by Benjamin A Pierce</a></div>
+  </div>
+
+  <div class="grid">
+    <div class="item"><span class="emoji">📒</span><a href="books/Genetics and Molecular Biology.pdf" target="_blank">Genetics and Molecular Biology by Robere Scleif</a></div>
+    <div class="item"><span class="emoji">📒</span><a href="books/Geoffrey Beckett_2013.pdf" target="_blank">Clinical Biochemistry Lecture Notes 9th Ed</a></div>
+    <div class="item"><span class="emoji">📒</span><a href="books/buffers_calbiochem.pdf" target="_blank">Buffer buffers_calbiochem</a></div>
+    <div class="item"><span class="emoji">📒</span><a href="books/Quick Review of Biochemistry for Undergraduates-313hlm.pdf" target="_blank">Quick Review of Biochemistry for UnderGraduates</a></div>
+  </div>
+
+  <div class="grid">
+    <div class="item"><span class="emoji">📙</span><a href="books/Hartl_Jones_Genetics.pdf" target="_blank">Genetics Principles and Analysis 4th Ed</a></div>
+    <div class="item"><span class="emoji">📙</span><a href="books/katzung-pharmacology.pdf" target="_blank">Basic and Clinical Pharmacology 12th Ed</a></div>
+    <div class="item"><span class="emoji">📙</span><a href="books/Practical-Manual-of-Biochemistry.pdf" target="_blank"> Practical Manual of Biochemistry</a></div>
+    <div class="item"><span class="emoji">📙</span><a href="books/Structural Bioinformatics (P.E. Bourne).pdf" target="_blank">Structural Bioinformatics</a></div>
+  </div>
+
+
+  <div class="grid">
+    <div class="item"><span class="emoji">📓</span><a href="books/Part#1 Lehninger Principles of Biochemistry, 6th Edition-1-650.pdf" target="_blank">Lehinger's Part 1</a></div>
+    <div class="item"><span class="emoji">📓</span><a href="books/Part#2 Lehninger Principles of Biochemistry, 6th Edition-651-1336.pdf" target="_blank">Lehninger's Part 2</a></div>
+    <div class="item"><span class="emoji">📓</span><a href="books/Lehninger Principles of Biochemistry (8th Ed.) by David L Nelson, Michael M Cox.pdf" target="_blank">Lehninger Principles of Biochemistry, 8th Edition</a></div>
+    <div class="item"><span class="emoji">📓</span><a href="books/tietz fundamental clinical book.pdf" target="_blank">Tietz Fundamental Clinical Book</a></div>
+  </div>
+
+
+</body>
+</html>
