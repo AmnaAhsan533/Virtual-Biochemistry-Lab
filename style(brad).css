@@ -1,0 +1,469 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0f172a;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  color: #c3cdda;
+}
+h1 {
+  text-align: center;
+  color: #60a5fa;
+}
+/* Sidebar (overlay style with slide animation) */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  /* hidden */
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: #1e293b;
+  color: white;
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  /* smooth slide */
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.sidebar a:hover {
+  background: #94a3b8;
+}
+
+.sidebar.active {
+  left: 0;
+}
+.sidebar-link i {
+  font-size: 1.6em;
+  vertical-align: middle;
+  margin-right: 12px;
+  transition: color 0.3s;
+}
+
+.theory-link i      { color: #3b82f6; } 
+.simulation-link i  { color: #06b6d4; } 
+.quiz-link i        { color: #f59e42; } 
+.reading-link i     { color: #ef4444; } 
+.reference-link i   { color: #22c55e; } 
+.back i             { color: #a3a3a3; } 
+
+h1 i {
+  font-size: 25px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+/* Hamburger button */
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.hamburger:hover{
+  font-size: 30px;
+}
+
+/* Overlay background with fade animation */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease;
+  z-index: 900;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Content Area */
+.content {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.section {
+  display: none;
+  min-height: 100%;
+}
+
+.section.active {
+  display: block;
+}
+
+/*Simulation*/
+.simulation-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  align-items: center;
+
+    background: url("images/background.jpg") no-repeat center center fixed;
+    background-size: cover; /* makes image cover whole screen */
+}
+    /* Table at bottom */
+    .table {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    /* Apparatus above table */
+    .apparatus {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        gap: 15px;
+        align-items: flex-end;
+    }
+
+    .pipette {
+        touch-action: none;
+        cursor: grab;
+        z-index: 10;
+        transition: transform 0.5s ease;
+    }
+
+
+    @keyframes dropFall {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(80px); opacity: 0; }
+    }
+
+    .drop {
+        position: absolute;
+        width: 10px;
+        height: 15px;
+        pointer-events: none;
+        animation: dropFall 0.5s linear forwards;
+    }
+
+    .scale-container img {
+        position: absolute;
+        top: 20%;
+        left: 31%;
+        height: 110%;
+        width: 10%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        transform-origin: center;
+    }
+
+    .shelf-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .samples {
+        position: absolute;
+        top: 55px;
+        left: 90px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 40px 70px;
+    }
+
+    .samples img {
+        height: 60px;
+    }
+        /* Button */
+    .toggle-btn {
+        background: #0077cc;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 6px;
+        margin: 20px;
+    }
+
+    /* Side Panel */
+    .side-panel {
+        position: fixed;
+        top: 0;
+        right: -400px;   /* hidden off-screen */
+        width: 300px;
+        height: 100%;
+          background: #1e293b;
+  color: white;
+        box-shadow: -2px 0 6px rgba(0,0,0,0.3);
+        transition: right 0.4s ease;
+        padding: 20px;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .side-panel.open {
+        right: 0;  /* slide in */
+    }
+
+    /* Close button inside panel */
+    .close-btn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        float: right;
+    }
+    canvas {
+      border: 1px solid #333;
+      background: #fff;
+    }
+        #closeBtn {
+            z-index: 1000;
+            position: fixed;
+  margin-top: 650px;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: none;
+  background: #cc0000;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+
+
+    left: 700px;
+
+}
+#closeBtn:hover {
+  background: #990000;
+}
+
+
+/*Theory Section*/
+#theory {
+  margin: 20px;
+}
+#theory p {
+  margin-top: 0;
+  color:  #c3cdda;
+}
+.accordion {
+  background: #1e293b;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  /* border: 1px solid #ddd; */
+}
+
+.accordion-header {
+  padding: 15px;
+  cursor: pointer;
+  background: #1e293b;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion-header i {
+  font-size: 20px;
+}
+.accordion-header:hover {
+  background: #3c4a5f;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 15px;
+  background: #334155;
+}
+
+.accordion-content p {
+  margin: 15px 0;
+}
+
+.accordion.active .accordion-content {
+  max-height: 1000px; /* if size isn't enough for content increase the height */
+  padding: 15px;
+}
+
+/* Arrow styles */
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 14px;
+}
+.accordion.active .arrow {
+  transform: rotate(90deg); /* rotate arrow when open */
+}
+
+/*Quiz Section*/
+#quiz h1 {
+  margin-bottom: 50px;
+}
+
+.quiz-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.quiz-question {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #f8fafc;
+}
+
+.quiz-options label {
+  display: block;
+  margin: 8px 0;
+  padding: 10px;
+  background: #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.quiz-options label:hover {
+  background: #475569;
+}
+.quiz-controls{
+  display: flex;
+  justify-content: center;
+}
+.quiz-btn {
+  margin: 10px 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 16px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+.quiz-btn:hover {
+  background: #60a5fa;
+}
+
+.quiz-result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #3b82f6;
+  text-align: center;
+}
+
+.correct {
+  background: #166534 !important; /* green */
+  color: #c3cdda;
+}
+.wrong {
+  border: 2px solid rgb(245, 57, 57);
+  background: #7533334f !important; /* red */
+  color: #c3cdda;
+}
+.show-correct {
+  border: 2px solid #166534;
+  background: #16653422 !important;
+  color: #c3cdda;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/*Additional Reading*/
+#reading {
+  margin: 20px;
+}
+#reading h1{
+  margin-bottom: 50px;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.book-card {
+  background:  #1e293b;;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card h3 {
+  margin-bottom: 25px;
+}
+
+.book-card a {
+  text-decoration: none;
+  color: white;
+  background: #3b82f6;
+  padding: 10px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  transition: background 0.2s ease;
+}
+
+.book-card a:hover {
+  background: #60a5fa;
+}
+
+/*References*/
+
+.references-container {
+  margin: 20px;
+      display: flex;
+      gap: 20px;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+.references-container:hover{
+  transform: translateY(-2px);
+  background: #3c4a5f;;
+}
+.ref-link{
+  text-decoration: none;
+  color: #c3cdda;
+}
+.ref-link:hover{
+  font-size: larger;
+}
