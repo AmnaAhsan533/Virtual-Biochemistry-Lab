@@ -519,6 +519,7 @@ interact('#spectrophotometer').dropzone({
                 spectrophotometerState = "blank";
 
                 blankCuvette.src="images/cuvette.png";
+                blankCuvette.style="";
             }, 2000);
         }
 
