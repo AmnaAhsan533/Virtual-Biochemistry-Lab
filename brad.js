@@ -517,6 +517,8 @@ interact('#spectrophotometer').dropzone({
             setTimeout(() => {
                 spectrophotometer.src = "images/spectrophotometerBlank.png";
                 spectrophotometerState = "blank";
+
+                blankCuvette.src="images/cuvette.png";
             }, 2000);
         }
 
