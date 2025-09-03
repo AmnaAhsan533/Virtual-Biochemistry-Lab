@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalase Experiment - Apparatus Layout</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+     <link rel="stylesheet" href="cat.css" />
+    
+  </head>
+  <body>
+    <!-- side bar -->
+     <div class="sidebar" id="sidebar">
+  <a href="#" class="sidebar-link theory-link" onclick="openSection('theory')">
+    <i class='bx bx-reading'></i> Theory
+  </a>
+  <a href="#" class="sidebar-link simulation-link" onclick="openSection('simulation')">
+    <i class='bx bx-vial'></i> Simulation
+  </a>
+  <a href="#" class="sidebar-link quiz-link" onclick="openSection('quiz')">
+    <i class='bx bx-intellect'></i> Quiz
+  </a>
+  <a href="#" class="sidebar-link reading-link" onclick="openSection('reading')">
+    <i class='bx bx-book'></i> Additional Reading
+  </a>
+  <a href="#" class="sidebar-link reference-link" onclick="openSection('reference')">
+    <i class='bx bx-link'></i> References
+  </a>
+  <a class="sidebar-link back" href="lab.html">
+    <i class='bx bx-arrow-left'></i> Go Back
+  </a>
+</div>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger" onclick="toggleSidebar()">
+      <i class='bxr  bx-menu'  ></i> 
+    </button>
+
+    <!-- Content -->
+    <div class="content" id="content">
+
+    <!--Theory-->
+      <div id="theory" class="section active">
+        <h1>Catalse Assay<i class='bxr  bx-beaker'  ></i> </h1>
+        <p style="text-align: center">
+          Catalase assay showcases enzyme power, converting hydrogen peroxide into oxygen.
+
+        </p>
+        <div class="accordion active">
+          <div class="accordion-header">
+            Principle <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              The enzyme catalase helps the breakdown of hydrogen peroxide into oxygen and water. Positive result produce bubbles due to oxygen gas formation while negative results do not show bubbles.
+ <p align="center">2H<sub>2</sub>O<sub>2</sub> ----------> 2H<sub>2</sub>O + O<sub>2</sub></p>
+This reaction shows that it is catalyzed by the enzyme catalase. Two hydrogen peroxide molecules (2 H2O2) is converted into two water molecules (2 H2O) and an oxygen molecule (O2). "Catalase" is written below the reaction arrow to show that this is the enzyme that enables this chemical reaction to occur.
+In plants, catalase scavenges H2O2 generated during mitochondrial electron transport, β-oxidation of the fatty acids, and most importantly photorespiratory oxidation. Accumulating evidence indicates that catalase plays an important role in plant defense, aging, and senescence
+
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Theory <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Oxidative stress is the main mechanism implicated in numerous pathologies and toxicities caused
+by xenobiotics. The balance between oxidation and reduction in cell affects the signaling
+cascades of hydrogen peroxide (H2O2). Although H2O2 has essential signaling functions, it can
+also be hazardous. It can be hazardous in high concentrations as it can undergo a Fenton reaction
+with transition metal ions, producing hydroxyl radicals that cause oxidative damage to cellular
+components such as proteins, lipids, and DNA. This can lead to changes in their structure and
+function that harms biological systems. The accumulation of oxidative damage can lead to
+chronic inflammation, accelerate aging, and play a role in the development of diseases.
+Catalase activity is the primary mechanism for detoxifying and regulating H2O2 levels. Catalase
+is an oxidoreductase enzyme, part of the antioxidant enzyme group, and can be found in the cells
+of mammals, plants, and aerobic bacteria. Based on their structure and function, catalase can be
+classified into three main types. The first and second groups comprise of heme-containing
+enzymes called typical or true catalases and catalase peroxidases. The third group comprises
+non-heme manganese catalases.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Materials Required <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <ol>
+              
+              <li>Spinach Paste</li>
+              <li>10 ml of Hydrogen Peroxide Solution</li>
+              <li>Distilled Water</li>
+              <li>Beaker</li>
+              <li>Measuring Cylinder</li>
+              <li>Blender or Mortar and Pestle</li>
+              <li>Filter Paper and Cheeecloth</li>
+              <li>Measuring Cykinders</li>
+              <li>Timer /Stopwatch</li>
+              <li>Pipette</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Procedure <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <ul>
+              
+                <h3>Preparation of Plant Extract:</h3>       
+                <li> Weigh some fresh spinach leaves. </li>
+                <li> Homogenize it using a blender or mortar and pestle with 20 ml of distilled water. </li>
+                <li> Filter the homogenate through cheesecloth to obtain a clear extract. </li>
+
+              
+              
+                <h3>Catalase Activity Assay:</h3>
+                <li>Add 10 ml fresh spinach extract to 100ml graduated cylinder.</li>
+                <li>Add 10 ml of hydrogen peroxide and immediately start the timer.</li>
+                <li>Record initial volume of 20 ml</li>
+                <li>Observe and record the rate of oxygen bubble formation for one minute.</li>
+                <li>Record the final volume.</li>
+              
+
+              
+               <h3>Control Experiment:</h3>
+               <li>Set up a control where no plant extract is added (only H2O2 + water) to confirm there is no spontaneous breakdown of H2O2.</li>
+              
+
+              
+                <h3>Repeatability:</h3>
+                <li>Repeat the procedure 2-3 times to ensure consistency and reliability of the results.</li>
+              
+            
+           
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!--Simulation-->
+       <div id="simulation" class="section">
+        <div class="sim-container">
+      <div class="lab-area">
+        <h1 style="color: #60a5fa" , id="h1">
+          Catalase Activity
+        </h1>
+        <div class="table-surface">
+          <div class="beaker-wrapper">
+            <img
+              src="assets/cyl.png"
+              class="apparatus beaker"
+              id="beaker"
+              alt="Beaker"
+            />
+            <div id="milk-fill"></div>
+            <div id="water-fill"></div>
+            <div class="precipitate-surface" id="precipitate-surface"></div>
+            <div class="precipitate-container" id="precipitate-container"></div>
+
+          </div>
+          
+          <img
+            src="assets/hydrogen peroxide.png"
+            class="apparatus"
+            id="milk"
+            alt="Milk Jar"
+          />
+          <div id="milk-stream"></div>
+          <div id="water-stream"></div>
+
+
+          <img
+            src="assets/Spinach Paste.png"
+            class="apparatus water"
+            id="water"
+            alt="Distilled Water"
+          />
+        
+        </div>
+
+        
+        <div class="liquid-milk" id="milkInBeaker"></div>
+        <div class="liquid-water" id="waterInBeaker"></div>
+        
+      </div>
+
+      <!-- instruction area -->
+      <div class="ins-area" , id="ins_area" >
+        <h2 style="text-align: center; color: #60a5fa">Instruction</h2>
+        <ul>
+          <li>Add <strong>10 ml of fresh spinach</strong> into the graduated cylinder.</li>
+          <li>
+            Then add <strong>10 ml of hydrogen peroxide</strong> to equalize volume.
+          </li>
+          <li>Note initial volume.</li>
+          <li>Wait for <strong>1 minute</strong>.</li>
+          <li>Note volume increases due to formation of oxygen gas bubbles</li>
+        </ul>
+        <!-- <button class="reset" onclick="location.reload()">Reset</button> -->
+         <button class="reset" id="reset-btn">Reset</button>
+      </div>
+      
+     </div>
+    </div>
+
+    <!-- quiz -->
+      <div id="quiz" class="section ">
+        <h1>
+          Quiz: Catalase Assay
+          <span><i class='bxr  bx-medical-flask'></i> </span>
+        </h1>
+
+        <div id="quiz-container" class="quiz-container">
+          <div id="question-box"></div>
+
+          <div class="quiz-controls">
+            <button id="prev-btn" class="quiz-btn">Previous</button>
+            <button id="next-btn" class="quiz-btn">Next</button>
+            <button id="submit-btn" class="quiz-btn" style="display: none">
+              Submit
+            </button>
+            <button id="reset-quiz" class="quiz-btn">Reset</button>
+          </div>
+
+          <div id="result" class="quiz-result"></div>
+        </div>
+      </div>
+
+
+      <!--Reading Material-->
+      <div id="reading" class="section">
+        <h1>An Improved Method for Measuring Catalse</h1>
+        <div class="book-list">
+          <div class="book-card">
+            <h3>Methods in Enzymology</h3>
+            <a href="Additional Reading/An improved method for measuring catalase activity in biological samples.pdf" target="_blank"
+              >Open PDF</a
+            >
+          </div>
+
+          <div class="book-card">
+            <h3>Catalase (A versatile antioxidant in plants)</h3>
+            <a href="Additional Reading/Catalase (A versatile antioxidant in plants).pdf" target="_blank"
+              >Open PDF</a
+            >
+          </div>
+        </div>
+      </div>
+      <!--References-->
+      <div id="reference" class="section">
+        <h1>References</h1>
+        <div class="references-container">
+          <a
+            href="https://askfilo.com/user-question-answers-smart-solutions/a-plan-how-to-investigation-to-test-catalase-activity-is-the-3331303131353639"
+            class="ref-link"
+            target="_blank"
+            >Investigation to test catalse activity</a>
+        </div>
+        <div class="references-container">
+          <a
+            href="https://bio.libretexts.org/Bookshelves/Microbiology/Microbiology_Laboratory_Manual_(Hartline)/01%3A_Labs/1.18%3A_Catalase_Test"
+            class="ref-link"S
+            target="_blank"
+            >Microbiology Laboratory Manual</a>
+        </div>
+       
+        
+      </div>
+    </div>
+
+    
+
+  
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="cat.js"></script>
+
+
+  </body>
+</html>

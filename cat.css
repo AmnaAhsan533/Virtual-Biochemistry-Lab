@@ -1,0 +1,618 @@
+/* Sidebar (overlay style with slide animation) */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  /* hidden */
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: #1e293b;
+  color: white;
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  /* smooth slide */
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.sidebar a:hover {
+  background: #94a3b8;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-link i {
+  font-size: 1.6em;
+  vertical-align: middle;
+  margin-right: 12px;
+  transition: color 0.3s;
+}
+
+.theory-link i {
+  color: #3b82f6;
+}
+
+.simulation-link i {
+  color: #06b6d4;
+}
+
+.quiz-link i {
+  color: #f59e42;
+}
+
+.reading-link i {
+  color: #ef4444;
+}
+
+.reference-link i {
+  color: #22c55e;
+}
+
+.back i {
+  color: #a3a3a3;
+}
+
+h1 i {
+  font-size: 25px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Hamburger button */
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.hamburger:hover {
+  font-size: 30px;
+}
+
+/* Overlay background with fade animation */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease;
+  z-index: 900;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Content Area */
+.content {
+  
+  
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+
+}
+
+.section {
+  display: none;
+min-height: 100%;
+
+  
+}
+
+.section.active {
+  display: block;
+  
+}
+
+/* simulation */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #0f172a;
+  color: #cbd5e1;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  
+}
+
+h1 {
+  text-align: center;
+  color: #60a5fa;
+}
+
+.sim-container {
+
+
+   display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+
+.lab-area {
+  position: relative;
+ /* width: 100%; */
+  width: 1000px;
+  height: 680px;
+  background-color: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  left: 3%;
+}
+
+.table-surface {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: #334155;
+  border-top: 4px solid #64748b;
+}
+
+.apparatus {
+  position: absolute;
+  width: 80px;
+  cursor: pointer;
+}
+
+.beaker {
+  width: 300px;
+  height: 400px;
+  bottom: 0;
+  left: 30%;
+
+
+}
+
+#milk {
+  top: -183px;
+  height: 180px;
+  width: 180px;
+  left: 10%;
+  transform-origin: top left;
+  cursor: pointer;
+
+}
+
+.water {
+  width: 250px;
+  height: 250px;
+  bottom: 114px;
+  left: 70%;
+}
+
+.beaker-wrapper {
+  position: absolute;
+  bottom: 120px;
+  left: 30%;
+  width: 200px;
+  height: auto;
+
+}
+
+/* Fixed solution fill - straight bottom, no curved edges */
+#milk-fill {
+  position: absolute;
+  bottom: 27px;
+  left: 72%;
+  width: 65%;
+  height: 0;
+  background: #15803d;
+  opacity: 0.9;
+  mix-blend-mode: normal;
+  /* Removed curved bottom - now straight */
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#water-fill {
+  position: relative;
+  bottom: 0;
+  left: 72%;
+  width: 65%;
+  height: 0;
+  top: -27px;
+  background: #15803d;
+  opacity: 0.9;
+  mix-blend-mode: normal;
+  /* Removed curved bottom - now straight */
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+.ins-area {
+  width: 400px;
+  position: relative;
+  background-color: #1e293b;
+  border-radius: 12px;
+  padding: 1rem;
+  left: 1.5%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+}
+
+#ins_area {
+  top: -20px;
+}
+
+.reset {
+  background-color: blue;
+  color: white;
+  padding: 12px 24px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 2px 2px 8px rgb(70, 70, 252);
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+  display: block;
+}
+
+/* .back {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background-color: blue;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 8px rgb(70, 70, 252);
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s ease;
+      } */
+
+/* Enhanced Precipitate/Bubble surface effect */
+.precipitate-surface {
+  position: absolute;
+  bottom: 27px;
+  left: 72%;
+  width: 65%;
+  height: 0;
+  pointer-events: none;
+  z-index: 15;
+  overflow: visible;
+}
+
+/* Multiple types of precipitates */
+.surface-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.9);
+  border: 1px solid rgba(34, 197, 94, 0.7);
+  animation: surface-float 3s ease-in-out infinite;
+}
+
+.surface-precipitate {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  animation: precipitate-dance 4s ease-in-out infinite;
+}
+
+.foam-layer {
+  position: absolute;
+  background: rgba(240, 253, 244, 0.7);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  animation: foam-movement 2s ease-in-out infinite;
+}
+
+@keyframes surface-float {
+
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes precipitate-dance {
+
+  0%,
+  100% {
+    transform: translateX(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+
+  33% {
+    transform: translateX(2px) rotate(15deg);
+    opacity: 1;
+  }
+
+  66% {
+    transform: translateX(-2px) rotate(-10deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes foam-movement {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 0.9;
+  }
+}
+
+/* Precipitate container for better management */
+.precipitate-container {
+  position: absolute;
+  bottom: 27px;
+  left: 72%;
+  width: 65%;
+  height: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: visible;
+}
+
+
+/*Theory Section*/
+#theory {
+  margin: 20px;
+}
+
+#theory p {
+  margin-top: 0;
+  color: #c3cdda;
+}
+
+.accordion {
+  background: #1e293b;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  /* border: 1px solid #ddd; */
+}
+
+.accordion-header {
+  padding: 15px;
+  cursor: pointer;
+  background: #1e293b;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-header i {
+  font-size: 20px;
+}
+
+.accordion-header:hover {
+  background: #3c4a5f;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 15px;
+  background: #334155;
+}
+
+.accordion-content p {
+  margin: 15px 0;
+}
+
+.accordion.active .accordion-content {
+  max-height: 1000px;
+  /* if size isn't enough for content increase the height */
+  padding: 15px;
+}
+
+/* Arrow styles */
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 14px;
+}
+
+.accordion.active .arrow {
+  transform: rotate(90deg);
+  /* rotate arrow when open */
+}
+
+/*Quiz Section*/
+#quiz h1 {
+  margin-bottom: 50px;
+}
+
+.quiz-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.quiz-question {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #f8fafc;
+}
+
+.quiz-options label {
+  display: block;
+  margin: 8px 0;
+  padding: 10px;
+  background: #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.quiz-options label:hover {
+  background: #475569;
+}
+
+.quiz-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-btn {
+  margin: 10px 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 16px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quiz-btn:hover {
+  background: #60a5fa;
+}
+
+.quiz-result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #3b82f6;
+  text-align: center;
+}
+
+.correct {
+  background: #166534 !important;
+  /* green */
+  color: #c3cdda;
+}
+
+.wrong {
+  border: 2px solid rgb(245, 57, 57);
+  background: #7533334f !important;
+  /* red */
+  color: #c3cdda;
+}
+
+.show-correct {
+  border: 2px solid #166534;
+  background: #16653422 !important;
+  color: #c3cdda;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/*Additional Reading*/
+#reading {
+  margin: 20px;
+}
+
+#reading h1 {
+  margin-bottom: 50px;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.book-card {
+  background: #1e293b;
+  ;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card h3 {
+  margin-bottom: 25px;
+}
+
+.book-card a {
+  text-decoration: none;
+  color: white;
+  background: #3b82f6;
+  padding: 10px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  transition: background 0.2s ease;
+}
+
+.book-card a:hover {
+  background: #60a5fa;
+}
+
+/*References*/
+
+.references-container {
+  margin: 20px;
+  display: flex;
+  gap: 20px;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.references-container:hover {
+  transform: translateY(-2px);
+  background: #3c4a5f;
+  ;
+}
+
+.ref-link {
+  text-decoration: none;
+  color: #c3cdda;
+}
+
+.ref-link:hover {
+  font-size: larger;
+}
