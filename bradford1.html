@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Isoelectric Precipitation</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    />
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style(brad).css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+  <a href="#" class="sidebar-link theory-link" onclick="openSection('theory')">
+    <i class='bx bx-reading'></i> Theory
+  </a>
+  <a href="#" class="sidebar-link simulation-link" onclick="openSection('simulation')">
+    <i class='bx bx-vial'></i> Simulation
+  </a>
+  <a href="#" class="sidebar-link quiz-link" onclick="openSection('quiz')">
+    <i class='bx bx-intellect'></i> Quiz
+  </a>
+  <a href="#" class="sidebar-link reading-link" onclick="openSection('reading')">
+    <i class='bx bx-book'></i> Additional Reading
+  </a>
+  <a href="#" class="sidebar-link reference-link" onclick="openSection('reference')">
+    <i class='bx bx-link'></i> References
+  </a>
+  <a class="sidebar-link back" href="lab.html">
+    <i class='bx bx-arrow-left'></i> Go Back
+  </a>
+</div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger" onclick="toggleSidebar()">
+      <i class='bxr  bx-menu'  ></i> 
+    </button>
+
+    <!-- Content -->
+    <div class="content" id="content">
+      <!--Theory-->
+      <div id="theory" class="section active">
+        <h1>Bradford Protein Assay<i class='bxr  bx-beaker'  ></i> </h1>
+        <p style="text-align: center">
+          To find the concentration of protein using Bradford Assay.
+        </p>
+        <div class="accordion active">
+          <div class="accordion-header">
+            Principle <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              The Bradford protein assay is based on the principle of the binding of a dye molecule i.e., Coomassie Brilliant Blue, to proteins results in a shift in the dye's absorption spectrum. In this assay, differential color change of a dye occurs in response to various concentrations of protein. The absorbance maxima of an acidic solution of Coomassie Brilliant Blue G-250 dye shifts from 465nm to 595nm when binds with protein, that results in a change in color from brown to blue. The Coomassie Blue dye binds to primarily basic and aromatic amino acid residues, especially arginine. Spector found that the extinction coefficient of a dye-albumin complex solution was constant over a 10-fold concentration range. Thus, Beer’s law may be applied for accurate quantification of protein by selecting an appropriate ratio of dye volume to sample concentration. The amount of protein in a sample (milk protein) is determined by measuring the absorbance of the blue-colored solution at 595 nm and comparing it to a standard curve generated using known concentrations of protein (BSA).
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Theory <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Bradford protein assay is popular due to its ease of performance and relative sensitivity. It can detect as little as 1 microgram of protein in a sample that makes it suitable for use with small amount of protein, such as those obtained from cell culture or tissue samples. The assay is also compatible with a wide range of sample types, including serum, plasma, cell lysates, and purified protein solutions.
+              Accurate protein concentration in unknown samples can be determined by using a standard curve plotted for known protein concentrations versus absorbance values of the analyte. The assay's sensitivity and dynamic range make it suitable for detecting protein concentrations between 1-200 μg/mL.
+              •	Mechanism of CBBG dye binding to proteins:
+              The Coomassie brilliant blue G-250 (CBBG) dye binds to proteins through ionic and hydrophobic interactions, primarily targeting basic amino acid residues such as arginine and lysine in the protein, which are abundantly present in most proteins. The dye–protein binding is also influenced by the hydrophobic interactions and Van der Waals forces. The binding process is rapid and stable.  <br>                                                                                                                                
+             •	Color shift mechanism and its relation to protein concentration:
+            When CBBG binds with proteins, it undergoes a visible color shift from brown to blue. It occurs due to the transition of the dye from its acidic form (brown; maximum absorption at 465 nm) to its basic form as a protein-dye complex (blue; maximum absorption at 595 nm). This color shift occurs due to the light absorbed by the bound dye, maximally at 595 nm. The degree of color shift is directly proportional to the concentration of protein. As protein concentration increases, more CBBG binds, resulting in a deeper blue color hence more absorbance.
+
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Materials Required <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <p>Apparatus and equipments:</p>
+            <ol>
+              <li>Spectrophotometer</li>
+              <li>Cuvettes with 1cm path length matched to laboratory spectrophotometer. 
+              (Disposable polystyrene cuvettes are recommended)
+              </li>
+              <li>13 x 100mm test tubes/ Eppendorf tubes</li>
+              <li>Vortex Mixer</li>
+              <li>Whatmann #1 filter (or equivalent) and funnel for dye reagent preparation</li>
+              <li>Graduated cylinders,</li>
+              <li>pipettes</li>
+            </ol>
+              <p>Chemicals and reagents:</p>
+            <ol>
+              <li>1x Bradford reagent</li>
+              <li>Protein sample</li>
+              <li>1x PBS</li>
+              <li>Bovine serum albumin (BSA) standard solutions</li>
+          
+            </ol>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Procedure <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <ol>
+              <li>
+                The starting material for the production of casein is skimmed
+                milk. The use of skim milk ensures that the fat content of the
+                casein is low enough to minimize flavor defects arising from
+                deterioration of lipids in the dried casein products.
+              </li>
+              <li>
+                Prepare the Bradford reagent according to the manufacturer's instructions. Briefly, the Bradford reagent can be prepared by dissolving 100 mg of Coomassie Brilliant Blue G-250 in 50 mL of 95% ethanol. Then, add 100 mL of 85% phosphoric acid and 850 mL of distilled water. Mix well and store the solution in a brown glass bottle.
+              </li>
+              <li>
+                Prepare a series of BSA standard solutions of known concentrations (e.g: 20, 40, 60, 80, 100 µg/mL) by diluting a stock solution of BSA in distilled water.
+              </li>
+              <li>
+               Prepare 100 µL of 1:50 diluted protein sample in PBS. For this, pipette 98µl of 1x PBS and 2µl of sample into the eppendorf tube and mix it. This mixture has diluted the sample to one part in 50.The concentration of protein sample should be within the linear range of the standard curve.
+              </li>
+              <li>
+                Next, take two cuvettes and label them as ‘blank’ and the other ‘sample.’ Add 20 µL of diluted (1:50) protein sample to the sample cuvette and 20 µL of 1x PBS to the blank cuvette.
+              </li>
+              <li>
+                Serially dilute the protein standards i.e. BSA. Label one cuvette each for the standards and label it appropriately. For the protein standard, 20 µL of each is added into the corresponding cuvette, followed by 1 mL of 1x Bradford reagent to all the cuvettes including blank and sample and mixed thoroughly.
+              </li>
+              <li>
+                After incubating for 5 minutes, measure the protein concentration using a spectrophotometer. Use a blank to set the spectrophotometer to zero absorbance or 100% transmittance. Then, measure the absorbance values of the protein standards and sample at 595nm. 
+              </li>
+              <li>
+                Create a standard curve by plotting the absorbance values measured at 595 nm (y-axis) against the corresponding protein concentrations in µg/mL (x-axis). Visually compare the cuvette visually compare the cuvette Use the standard curve to determine the protein concentration in your sample.
+                <ul>
+                  <li>Data analysis and interpretation:</li>
+                  <p>Accurate data analysis is vital for obtaining reliable results in the Bradford assay. The process involves generating a standard curve to establish the relationship between protein concentration and absorbance that serves as the reference for determining the concentration of unknown samples. Proper interpretation of the data requires careful consideration of factors that may influence accuracy and reproducibility.</p>
+                  <li>Generating and analyzing a standard curve:</li>
+                  <p>A standard curve is generated by plotting the absorbance values (at 595 nm) against the known protein concentrations of protein standards (typically BSA). The data for a curve is generated using the following range of concentrations of the BSA standard: 0, 20, 40, 60, 80, 100 µg/ml. Linear regression analysis is used to fit the data and ensure a strong correlation coefficient (R² > 0.95) for the best results. The standard curve should be linear within the chosen concentration range.</p>
+                </ul>
+                <li>To determine the protein concentration in an unknown sample, follow these steps:</li>
+                <ol>
+                  <li>Record the absorbance of the unknown sample at 595 nm.</li>
+                  <li>Apply the linear regression equation derived from the standard curve, y=mx+c, where:</li>
+                  <ul>
+                    <li>y = absorbance</li>
+                    <li>x = protein concentration</li>
+                    <li>m = slope of the line</li>
+                    <li>c= y-intercept</li>
+                  </ul>
+                  <li>Now calculate the slope (m). For this, identify two points on the line (the dashed green line on the standard curve), noting their (BSA concentration, x-axis) and (Absorbance, y-axis) values.</li>
+                  <li>The y-intercept (c) is calculated with one data point on the standard curve. Next, the m and c values are used for further calculations using the mx+c equation.</li>
+                  <li>Measure the absorbance of your unknown protein sample and place the absorbance value into the standard curve equation. Rearrange the equation to solve for x (protein concentration) = (y - c)/ m</li>
+                  <li>If the absorbance of the unknown sample exceeds the linear range of the standard curve, dilute the sample and remeasure.</li>
+                </ol>
+              </li>
+            </ol>
+            
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header">
+            Differences Encountered in a Real Laboratory
+            <span class="arrow"><i class='bxr  bx-caret-right'  ></i> </span>
+          </div>
+          <div class="accordion-content">
+            <ol>
+              <li>
+                Always wear personal protective equipment when you are in the lab. When you enter the lab, switch on the exhaust fan and make sure that all the reagents required for the experiment are available. If it is not available, prepare the reagents using the components shown in the reagent preparation.
+              </li>
+              <li>
+                Ensure that the Bradford reagent is freshly prepared and stored in a brown glass bottle to prevent photodegradation.
+              </li>
+              <li>
+                The Coomassie dye reagent contains acidic components that may irritate the skin and eyes.
+              </li>
+              <li>
+               Dispose of waste solutions according to local regulations.
+              </li>
+              <li>
+                Avoid exposure to open flames.
+              </li>
+              <li>Wash hands and equipment after completing the assay.</li>
+              </ol>
+          </div>
+        </div>
+      </div>
+      <!--Simulation-->
+      <div id="simulation" class="section">
+        <div class="simulation-container">
+          <div class="side-panel" id="myPanel">
+    <button class="close-btn" onclick="togglePanel()">X</button>
+    <h3>Instructions</h3>
+    <p>Here are your step-by-step instructions:</p>
+    <ul>
+        <li>Step 1: Pipette 98 microlitre of PBS solution using micropipette into an empty micro centrifuge tube.
+         </li>
+        <li>Step 2: Pipette 2 microlitre of milk sample into microtube.</li>
+        <li>Step 3:Take 7 cuvettes, 5 for protein standards having conc 20, 40, 60, 80,100,(µg/ml) respectively, 1 cuvette for blank and 1 for test.</li>
+        <li>Step 4:Add 20 microlitre diluted milk sample into the cuvette  sample and 20 microlitre of PBS into the blank.</li>
+        <li>Step 5:Add 1 ml Bradford reagent in each cuvette including test and blank.</li>
+        <li>Step 6:Incubate at room temperature for 5 mins.
+        <li>Step 7:Put blank cuvette into spectrophotometer.
+        <li>Step 8:Put  cuvette 1 to cuvette 5 into spectrophotometer.
+        <li>Step 9:Put sample cuvette into spectrophotometer.
+        <li>Step 10:Generate graph.
+</li>
+    </ul>
+</div>
+<div class="scale-container">
+    <img src="images/scale.png" alt="Scale">
+    <!-- Pipettes -->
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 8%;" class="pipette" id="pipette98">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 13%;" class="pipette" id="pipette2">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 18%;" class="pipette" id="pipette0125c">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 24%;" class="pipette" id="pipette025c">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 29%;" class="pipette" id="pipette05c">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 35%;" class="pipette" id="pipette075c">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 40%;" class="pipette" id="pipette1c">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 45%;" class="pipette" id="pipette20.1">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 50%;" class="pipette" id="pipette20.2">
+    <img src="images/unfilled pipette.png" alt="" style="height: 30px; width: 30px; top: 30%; left: 55%;" class="pipette" id="pipette1">
+</div>
+
+<!-- Apparatus -->
+<div class="apparatus">
+    <img src="images/bradford.png" alt="" height="200" id="bradford">
+    <img src="images/milk filled tube.png" alt="Milk Filled Tube" height="200" id="milk-tube">
+    <img src="images/pbs filled tube.png" alt="PBS Filled Tube" height="200" id="pbs-tube">
+    <img src="images/microcentrifuge empty.png" alt="microtube" height="150" id="microtube" title="microtube">
+    
+    
+
+    <!-- Cuvettes -->
+    <img src="images/cuvette.png" alt="" height="150" class="cuvette" id="cuvette1" title="cuvette 1">
+    <img src="images/cuvette.png" alt="" height="150" class="cuvette" id="cuvette2" title="cuvette 2">
+    <img src="images/cuvette.png" alt="" height="150" class="cuvette" id="cuvette3" title="cuvette 3">
+    <img src="images/cuvette.png" alt="" height="150" class="cuvette" id="cuvette4" title="cuvette 4">
+    <img src="images/cuvette.png" alt="" height="150" class="cuvette" id="cuvette5" title="cuvette 5">
+    
+    <img src="images/cuvette.png" alt="" height="150" class="cuvette" id="sample" title="sample cuvette">
+    <img src="images/cuvette.png" alt="" height="150" class="cuvette"id="blank" title=" blank cuvette ">
+
+    <!--spectrophotometer-->
+    <img src="images/spectrophotometer.png" alt="spectrophotometer" height="200" id="spectrophotometer" width="200">
+
+    <!-- Shelf -->
+    <div class="shelf-container">
+        <img src="images/shelf.png" alt="Shelf" height="420" id="shelf">
+        <div class="samples">
+            <img src="images/green sample.png" alt="" id="green-sample">
+            <img src="images/yellow sample.png" alt="" id="yellow-sample">
+            <img src="images/brown sample.png" alt="" id="brown-sample">
+            <img src="images/pink sample.png" alt="" id="pink-sample">
+            <img src="images/red sample.png" alt="" id="red-sample">
+            
+           
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+        
+    </div>
+    
+</div>
+
+<!-- Incubate Button -->
+<button id="incubateBtn" style="
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+">Incubate</button>
+<!-- Instruction Button -->
+<button class="toggle-btn" onclick="togglePanel()" style="
+    position: fixed;
+    bottom: 5px;
+    right: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+">Instruction</button>
+<!-- Graph Button -->
+<button class="toggle-btn" onclick="startGraph()" style="
+    position: fixed;
+    bottom: 5px;
+    left: 700px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+">Graph</button>
+
+<!--animation gif
+<img src="filled-cuvette-animation.gif" alt="">
+<img src="bradford-filled-cuvette-animation.gif" alt="">
+-->
+
+
+<!-- Table -->
+<div class="table">
+    <img src="images/bg.png" alt="Lab Table" height="300">
+    
+</div>
+<canvas id="graphCanvas" width="1400" height="600" style="display:none; z-index: 1000;margin-top: 20px;"></canvas>
+<button id="closeBtn" style="display:none;">✖ Close</button>
+          
+          
+        </div>
+      </div>
+      <!--Quiz-->
+      <div id="quiz" class="section">
+        <h1>
+          Quiz: Bradford Assay
+          <span><i class='bxr  bx-medical-flask'></i> </span>
+        </h1>
+
+        <div id="quiz-container" class="quiz-container">
+          <div id="question-box"></div>
+
+          <div class="quiz-controls">
+            <button id="prev-btn" class="quiz-btn">Previous</button>
+            <button id="next-btn" class="quiz-btn">Next</button>
+            <button id="submit-btn" class="quiz-btn" style="display: none">
+              Submit
+            </button>
+            <button id="reset-quiz" class="quiz-btn">Reset</button>
+          </div>
+
+          <div id="result" class="quiz-result"></div>
+        </div>
+      </div>
+      <!--Reading Material-->
+      <div id="reading" class="section">
+        <h1>Additional Reading</h1>
+        <div class="book-list">
+          <div class="book-card">
+            <h3>Quantification of Protien</h3>
+            <a href="reading/quantification-of-protien.pdf" target="_blank"
+              >Open PDF</a
+            >
+          </div>
+
+          <div class="book-card">
+            <h3>Bio-Rid Protien Assay</h3>
+            <a href="reading/biorid.pdf" target="_blank"
+              >Open PDF</a
+            >
+          </div>
+        </div>
+      </div>
+      <!--References-->
+      <div id="reference" class="section">
+        <h1>References</h1>
+        <div class="references-container">
+          <a
+            href="https://pubs.acs.org/doi/pdf/10.1021/acs.jchemed.1c00756?ref=article_openPDF"
+            class="ref-link"
+            target="_blank"
+            >ACS Publications</a>
+        </div>
+        <div class="references-container">
+          <a
+            href="https://www.abcam.com/en-us/knowledge-center/western-blot/bradford-assay?srsltid=AfmBOoqBXwwNBl6mtOFjcYDb_6_PBT9e20bMdIoE2Mdm5CSqfrxQxFL2"
+            class="ref-link"
+            target="_blank"
+            >abcam</a>
+        </div>
+        <div class="references-container">
+          <a
+            href="https://www.researchsquare.com/article/rs-2511440/v1"
+            class="ref-link"
+            target="_blank"
+            >Research Square</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="brad.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  </body>
+</html>

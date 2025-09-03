@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Biochemistry Crossword</title>
+<style>
+  body {
+  font-family: "Poppins", sans-serif;
+  background: #0f172a;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  
+  
+}
+  h1 { text-align: center; color:  #60a5fa;font-size: 60px;}
+  table.crossword {
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+  table.crossword td {
+    width: 35px; height: 35px;
+    border: 1px solid #555;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
+    background: white;
+  }
+
+  td input {
+    background: #3c4a5f;
+    width: 90%; height: 90%;
+    
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.2s ease-in-out;
+   color: aliceblue;
+
+  }
+  td input:hover {
+  transform: scale(1.1);
+  z-index: 2;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+  .number {
+    position: absolute;
+    top: 2px; left: 2px;
+    font-size: 10px;
+     color: aliceblue;
+  }
+
+
+  
+.a{
+    visibility: hidden; 
+    background: transparent;
+    border: none !important;
+  }
+  .error {
+    border: 2px solid red;
+    color: red;
+  }
+    /* Clues Section */
+  .clues-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    max-width: 1000px;
+    flex-wrap: wrap;
+  }
+  .clue-card {
+    flex: 1;
+    min-width: 300px;
+    color: white;
+    border-radius: 12px;
+    background-color: #1e293b;
+    box-shadow: -2px 0 6px rgba(0,0,0,0.3);
+    padding: 20px;
+    transition: transform 0.2s ease;
+  }
+  .clue-card:hover {
+    transform: translateY(-5px);
+  }
+  .clue-card h2 {
+    margin-top: 0;
+    color: aliceblue;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 5px;
+  }
+  .clue-card p {
+    margin: 10px 0;
+    font-size: 15px;
+    color: aliceblue;
+    line-height: 1.4em;
+  }
+</style>
+<script>
+    function validateLetter(input, letter) {
+      if (input.value.toUpperCase() === letter.toUpperCase() || input.value === '') {
+        input.classList.remove("error");
+      } else {
+        input.classList.add("error");
+      }
+    }
+  </script>
+</head>
+<body>
+
+<h1>Biochemistry Crossword Puzzle</h1>
+
+<!-- Crossword Grid -->
+<table class="crossword">
+  <!-- Example row layout -->
+
+<tr><!-- 1 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">1</div><input type="text" maxlength="1" oninput="validateLetter(this, 'F')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">2</div><input type="text" maxlength="1" oninput="validateLetter(this, 'K')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 2 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 3 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">3</div><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td class="a"></td>
+   <td><div class="number">4</div><input type="text" maxlength="1" oninput="validateLetter(this, 'U')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 4 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">5</div><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 5 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1"oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 6 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">6</div><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'H')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 7 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td ><div class="number">7</div><input type="text" maxlength="1" oninput="validateLetter(this, 'T')">
+      </td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'H')">
+      </td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'K')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'D')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 8 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td><div class="number">8</div><input type="text" maxlength="1" oninput="validateLetter(this, 'U')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td><div class="number">9</div><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 9 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">10</div><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'D')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'X')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 10 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'H')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">11</div><input type="text" maxlength="1" oninput="validateLetter(this, 'K')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td><div class="number">12</div><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 11 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">13</div><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td><div class="number">14</div><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'H')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td><div class="number">15</div><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'H')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 12 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'H')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'D')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 13 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><div class="number">16</div><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td><div class="number">17</div><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 14 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'U')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 15 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'D')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'P')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">18</div><input type="text" maxlength="1" oninput="validateLetter(this, 'B')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+</tr>
+<tr><!-- 16 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'B')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'H')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 17 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">19</div><input type="text" maxlength="1" oninput="validateLetter(this, 'M')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><div class="number">20</div><input type="text" maxlength="1" oninput="validateLetter(this, 'F')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 18 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'D')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'U')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'M')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 19 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'M')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">21</div><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, '2')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 20 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'U')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 21 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">22</div><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">23</div><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td><div class="number">24</div><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 22 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td><div class="number">25</div><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 23 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'M')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 24 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'U')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 25 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'M')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Z')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 26 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">26</div><input type="text" maxlength="1" oninput="validateLetter(this, 'M')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Y')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td><div class="number">27</div><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'O')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    
+</tr>
+<tr><!-- 27 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'G')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'M')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 28 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 29 ROW -->
+    <td><div class="number">28</div><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'V')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'N')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'Q')"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">29</div><input type="text" maxlength="1" oninput="validateLetter(this, 'W')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 30 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'L')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 31 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'X')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 32 ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><div class="number">30</div><input type="text" maxlength="1" oninput="validateLetter(this, 'C')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'I')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'S')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'T')"></td>
+    <td ><input type="text" maxlength="1" oninput="validateLetter(this, 'A')"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+<tr><!-- 33ROW -->
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'E')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td><input type="text" maxlength="1" oninput="validateLetter(this, 'R')"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+    <td class="a"></td>
+</tr>
+  <!-- Add remaining rows here following same structure -->
+</table>
+<!-- Clues Section -->
+<div class="clues-container">
+  <div class="clue-card">
+    <h2>Across</h2>
+    <p>6) use flow of proton to synthesize ATP</p>
+    <p>7) membranous sacks in the stroma of the chloroplast</p>
+    <p>13) enzyme that converts glycogen to glucose-1-phosphate</p>
+    <p>16) precursor to coenzyme Q</p>
+    <p>18) cofactor in acetyl CoA carboxylase</p>
+    <p>19) compound CO2 is fixed to in the CAM pathway</p>
+    <p>21) carbon in its fully oxidized state</p>
+    <p>24) transports activated fatty acids across the inner mitochondrial membrane</p>
+    <p>26) activated acetyl CoA that is formed in the committed step for fatty acid synthesis</p>
+    <p>28) where the urea cycle takes place in humans</p>
+    <p>30) fold of mitochondrial inner membrane</p>
+  </div>
+
+  <div class="clue-card">
+    <h2>Down</h2>
+    <p>1) vitamin that is very important in spinal cord development</p>
+    <p>2) amino acids that can be metabolized to form fats but not glucose</p>
+    <p>3) created by the electron transport chain to power ATP synthesis</p>
+    <p>4) cycle that synthesizes urea from ammonium</p>
+    <p>5) negatively charged residue in c subunit of ATP synthase</p>
+    <p>8) organisms that secrete excess ammonium as urea</p>
+    <p>9) final electron receptor in electron transport chain</p>
+    <p>10) location of photosynthesis</p>
+    <p>11) can be used to make glucose from fatty acids for the brain during starvation</p>
+    <p>12) location of fatty acid synthesis</p>
+    <p>14) enzyme that converts glucose-1-phosphate to glucose-6-phosphate</p>
+    <p>15) transports electrons from photosystem II to photosystem I</p>
+    <p>17) enzyme in plants that fixes CO2</p>
+    <p>20) precursor to gluconeogenesis produced in the urea cycle</p>
+    <p>22) space in the chloroplast surrounded by the inner membrane</p>
+    <p>23) mobile electron carrier in electron transport chain</p>
+    <p>25) storage form of glucose in animals that is readily available for conversion to energy</p>
+    <p>26) space inside mitochondrial inner membrane</p>
+    <p>27) enzyme that protects the body from reactive oxygen species</p>
+    <p>29) supplies electrons for light reaction of photosynthesis</p>
+  </div>
+</div>
+
+</body>
+</html>
