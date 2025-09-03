@@ -510,20 +510,15 @@ interact('#spectrophotometer').dropzone({
     ondrop: (event) => {
         const targetId = event.relatedTarget.id;
 
-// Blank logic
-if (targetId === "blank" && blankCuvetteState === "filled") {
-    spectrophotometer.src = "images/spectrophotometer.gif";
-    blankCuvette.src = ""; // temporarily hide
-
-    setTimeout(() => {
-        spectrophotometer.src = "images/spectrophotometerBlank.png";
-        spectrophotometerState = "blank";
-
-        // Restore blank cuvette at its original position
-        blankCuvette.src = "images/cuvette.png"; 
-        blankCuvette.style = ""; // clear inline styles if you had moved it
-    }, 2000);
-
+        // Blank logic
+        if (targetId === "blank" && blankCuvetteState === "filled") {
+            spectrophotometer.src = "images/spectrophotometer.gif";
+            blankCuvette.src="";
+            setTimeout(() => {
+                spectrophotometer.src = "images/spectrophotometerBlank.png";
+                spectrophotometerState = "blank";
+            }, 2000);
+        }
 
         // Sample logic
         else if (targetId === "sample" && sampleCuvetteState === "filled") {
@@ -532,13 +527,10 @@ if (targetId === "blank" && blankCuvetteState === "filled") {
             setTimeout(() => {
                 spectrophotometer.src = "images/spectrophotometerSample.png";
                 spectrophotometerState = "sample";
-
-                sampleCuvette.src="images/cuvette.png";
-                sampleCuvette.style="";
             }, 2000);
         }
 
-      // Standards cuvettes
+        // Standards cuvettes
         else if (targetId.startsWith("cuvette")) {
             const cuvetteIndex = targetId.replace("cuvette", "");
             const cuvetteEl = document.getElementById(targetId); 
@@ -547,11 +539,6 @@ if (targetId === "blank" && blankCuvetteState === "filled") {
             setTimeout(() => {
                 spectrophotometer.src = `images/spectrophotometerSample${cuvetteIndex}.png`;
                 spectrophotometerState = cuvetteIndex;
-
-                cuvetteEl.src="images/cuvette.png";
-                cuvetteEl.style="";
-
-
             }, 2000);
         }
     }
