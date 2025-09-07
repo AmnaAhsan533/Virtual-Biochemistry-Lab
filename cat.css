@@ -158,8 +158,8 @@ h1 {
 .lab-area {
   position: relative;
  /* width: 100%; */
-  width: 800px;
-  height: 600px;
+  width: 1100px;
+  height: 800px;
   background-color: #1e293b;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -618,3 +618,4 @@ h1 {
 .ref-link:hover {
   font-size: larger;
 }
+
